@@ -1,0 +1,174 @@
+/*
+ * Styles for the CodeX home page, extracted from the original Claude
+ * Design artifact (base resets, keyframes, and the hover/focus rules the
+ * design used its own scoped-class runtime for, since inline styles can't
+ * express :hover/:focus).
+ */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: #fbfbfc;
+  color: #212121;
+  font-family: "Outfit", system-ui, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #4a659d;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3b5482;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: #dbe0eb;
+}
+
+@keyframes cx-float-a {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-13px);
+  }
+}
+@keyframes cx-float-b {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+@keyframes cx-float-c {
+  0%,
+  100% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+@keyframes cx-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-24px, 18px, 0) scale(1.1);
+  }
+}
+@keyframes cx-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes cx-blip {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.25;
+  }
+}
+@keyframes cx-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  22% {
+    transform: translateX(-4px);
+  }
+  44% {
+    transform: translateX(3px);
+  }
+  66% {
+    transform: translateX(-2px);
+  }
+  88% {
+    transform: translateX(1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-float],
+  [data-drift],
+  [data-pulse] {
+    animation: none !important;
+  }
+}
+
+/* Hover / focus states for the design's scoped interactive elements. */
+.scp0:hover {
+  color: #4a659d !important;
+}
+.scp1:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 24px rgba(74, 101, 157, 0.28) !important;
+  background: #41598c !important;
+  color: #fff !important;
+}
+.scp2:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 30px rgba(74, 101, 157, 0.26) !important;
+  background: #41598c !important;
+  color: #fff !important;
+}
+.scp3:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 26px rgba(48, 58, 81, 0.1) !important;
+  border-color: #c9d0df !important;
+  color: #212121 !important;
+}
+.scp4:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 22px 48px rgba(48, 58, 81, 0.09) !important;
+  border-color: #dde2ec !important;
+}
+.scp5:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28) !important;
+  color: #303a51 !important;
+}
+.scp6:focus {
+  border-color: #4a659d !important;
+  box-shadow: 0 0 0 3px rgba(74, 101, 157, 0.14) !important;
+  background: #fff !important;
+}
+.scp7:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 30px rgba(74, 101, 157, 0.3) !important;
+  background: #41598c !important;
+}
+.scp8:hover {
+  color: #4a659d !important;
+  border-color: #dbe0eb !important;
+}
