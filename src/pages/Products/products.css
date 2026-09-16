@@ -1,0 +1,16 @@
+/* Products page: module-card hover (card lift/shadow + its number recoloring together). */
+.prod-mod {
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+}
+.prod-mod:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(48, 58, 81, 0.08);
+  border-color: #dde2ec;
+}
+.prod-mod-num {
+  transition: color 240ms ease, letter-spacing 240ms ease;
+}
+.prod-mod:hover .prod-mod-num {
+  color: #303a51;
+  letter-spacing: 0.08em;
+}

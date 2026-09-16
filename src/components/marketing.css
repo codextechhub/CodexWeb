@@ -1,0 +1,114 @@
+/*
+ * Shared chrome for the "exact fidelity" marketing pages (Products, Contact):
+ * header/footer hover states and the animation keyframes their sections use.
+ * Kept separate from home.css so identically-named hover classes never
+ * collide between pages that stay mounted in the same SPA.
+ */
+
+a {
+  color: #4a659d;
+  text-decoration: none;
+}
+a:hover {
+  color: #3b5482;
+}
+
+.mkt-nav-links {
+  display: flex;
+}
+.mkt-nav-toggle {
+  display: none;
+}
+.mkt-nav-panel {
+  display: none;
+}
+.mkt-nav-panel.is-open {
+  display: flex;
+}
+
+@media (max-width: 759px) {
+  .mkt-nav-links {
+    display: none;
+  }
+  .mkt-nav-toggle {
+    display: flex;
+  }
+}
+
+@keyframes cx-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-24px, 18px, 0) scale(1.1);
+  }
+}
+@keyframes cx-float-c {
+  0%,
+  100% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+@keyframes cx-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes cx-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mkt-float,
+  .mkt-drift,
+  .mkt-pulse,
+  .mkt-sweep {
+    animation: none !important;
+  }
+}
+
+/* Header nav links + footer links: color -> #4A659D on hover. */
+.mkt-link:hover {
+  color: #4a659d !important;
+}
+
+/* Header "Book a Demo" pill (small, in the nav bar). */
+.mkt-cta-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(74, 101, 157, 0.28);
+  background: #41598c !important;
+  color: #fff !important;
+}
+
+/* Large primary buttons on dark or light backgrounds ("View XVS", "Send message"). */
+.mkt-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(74, 101, 157, 0.26);
+  background: #41598c !important;
+}
+
+/* Large white-on-navy CTA ("Book a Demo" closing banner). */
+.mkt-cta-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+input:focus,
+textarea:focus {
+  border-color: #4a659d !important;
+  box-shadow: 0 0 0 3px rgba(74, 101, 157, 0.14);
+  background: #fff !important;
+}

@@ -16,3 +16,10 @@ body {
 #root {
   min-height: 100svh;
 }
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+}
