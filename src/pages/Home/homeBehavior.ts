@@ -50,7 +50,6 @@ const FAN_RIGHT = [[-6, "1.6deg"], [-46, "-1.1deg"], [-12, "0.9deg"]];
 
 class HomeBehavior {
   root: HTMLElement;
-  state = { submitted: false };
   props = { showTrustStrip: true, ambientMotion: true, sequencePace: "Calm" as "Calm" | "Brisk", navOnScroll: "Blur" as "Blur" | "Solid" };
   constructor(root: HTMLElement) {
     this.root = root;
@@ -793,7 +792,7 @@ class HomeBehavior {
     if (!this._form) return;
     const onSubmit = async (e: Event) => {
       e.preventDefault();
-      if (this._sending || this.state.submitted) return;
+      if (this._sending) return;
       if (!this._validateAll()) return;
       const label = this._form!.querySelector("[data-submit-label]");
       const note = this.root.querySelector("[data-form-note]");
@@ -805,6 +804,7 @@ class HomeBehavior {
       if (label) label.textContent = "Sending...";
       if (note) {
         note.setAttribute("role", "status");
+        note.style.color = "#5C5D5C";
         note.textContent = "Sending your request...";
       }
       try {
@@ -817,9 +817,15 @@ class HomeBehavior {
           reason: "Demo",
           form_name: "Homepage demo form",
         });
-        this.state.submitted = true;
-        if (label) label.textContent = "Request received";
-        if (note) note.textContent = "Thanks — we reply within one business day.";
+        this._form.reset();
+        Object.keys(this._rules).forEach((name) => {
+          const input = this._form.querySelector('[name="' + name + '"]');
+          if (input && input._check) input._check(false);
+        });
+        if (note) {
+          note.textContent = "Request sent successfully. Thanks — we reply within one business day.";
+          note.style.color = "#15803D";
+        }
       } catch (err) {
         console.error("[home demo form] send failed", err);
         if (label) label.textContent = "Request a demo";
@@ -830,7 +836,8 @@ class HomeBehavior {
       } finally {
         this._sending = false;
         this._form.setAttribute("aria-busy", "false");
-        if (btn) btn.disabled = this.state.submitted;
+        if (btn) btn.disabled = false;
+        if (label) label.textContent = "Request a demo";
       }
     };
     this._form.addEventListener("submit", onSubmit);

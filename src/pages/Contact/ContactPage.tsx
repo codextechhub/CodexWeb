@@ -92,7 +92,8 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (sendingRef.current || submitted) return;
+    if (sendingRef.current) return;
+    setSubmitted(false);
     setSubmitAttempted(true);
     if (Object.keys(validate(fields)).length > 0) return;
     sendingRef.current = true;
@@ -100,6 +101,9 @@ export default function ContactPage() {
     setSendError("");
     try {
       await sendEnquiry({ ...fields, reason, form_name: "Contact form" });
+      setFields({ ...EMPTY_FIELDS });
+      setTouched({});
+      setSubmitAttempted(false);
       setSubmitted(true);
     } catch (err) {
       console.error("[contact form] send failed", err);
@@ -176,7 +180,7 @@ export default function ContactPage() {
                 </span>
                 <div style={{ display: "flex", flexDirection: "column", gap: 3, minWidth: 0 }}>
                   <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase", color: "#8F918F" }}>Email</span>
-                  <a href="mailto:hello@codextechhub.com" style={{ fontSize: 14.5, fontWeight: 500, wordBreak: "break-word" }}>hello@codextechhub.com</a>
+                  <a href="mailto:info@codexng.com" style={{ fontSize: 14.5, fontWeight: 500, wordBreak: "break-word" }}>info@codexng.com</a>
                 </div>
               </div>
               <div style={{ display: "flex", gap: 12, paddingTop: 16, borderTop: "1px solid #F7F7F7" }}>
@@ -350,7 +354,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              disabled={sending || submitted}
+              disabled={sending}
               className="mkt-cta-primary"
               style={{
                 height: 52,
@@ -360,16 +364,16 @@ export default function ContactPage() {
                 color: "#fff",
                 fontSize: 16,
                 fontWeight: 500,
-                cursor: submitted ? "default" : "pointer",
-                opacity: submitted ? 0.75 : 1,
+                cursor: sending ? "wait" : "pointer",
+                opacity: sending ? 0.75 : 1,
                 transition: "transform 200ms ease, box-shadow 200ms ease, background 200ms ease",
               }}
             >
-              {sending ? "Sending..." : submitted ? "Message sent" : "Send message"}
+              {sending ? "Sending..." : "Send message"}
             </button>
             {sendError && <p role="alert" style={fieldErrorStyle}>{sendError}</p>}
-            <p role="status" style={{ margin: 0, fontSize: 12.5, lineHeight: 1.5, color: "#8F918F" }}>
-              {submitted ? "Thanks — we reply within one business day." : "We use these details only to reply to you."}
+            <p role="status" style={{ margin: 0, fontSize: 12.5, lineHeight: 1.5, color: submitted ? "#15803D" : "#8F918F" }}>
+              {submitted ? "Message sent successfully. Thanks — we reply within one business day." : "We use these details only to reply to you."}
             </p>
           </form>
         </div>
