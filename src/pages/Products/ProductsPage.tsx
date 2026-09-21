@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MarketingHeader from "../../components/MarketingHeader";
 import MarketingFooter from "../../components/MarketingFooter";
 import { initProductsBehavior } from "./productsBehavior";
+import { XVS_URL } from "../../xvsLink";
 import "../../components/marketing.css";
 import "./products.css";
 
@@ -124,8 +125,11 @@ export default function ProductsPage() {
                   ))}
                 </div>
 
-                <Link
-                  to="/xvs"
+                {/* XVS lives on its own domain — link goes there, not to an internal route */}
+                <a
+                  href={XVS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mkt-cta-primary"
                   style={{
                     display: "inline-flex",
@@ -144,7 +148,7 @@ export default function ProductsPage() {
                 >
                   View XVS
                   {ARROW_RIGHT}
-                </Link>
+                </a>
               </div>
 
               <div data-console-holder="" style={{ flex: "1 1 420px", minWidth: 0, position: "relative", alignSelf: "stretch" }}>

@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import { XVS_URL } from "../../xvsLink";
 import "../../components/marketing.css";
 import "./notFound.css";
 
 const LINKS = [
   { to: "/products", title: "Products", desc: "The CodeX portfolio" },
-  { to: "/xvs", title: "XVS", desc: "School management platform" },
+  // XVS lives on its own domain — links there, not to an internal route
+  { href: XVS_URL, title: "XVS", desc: "School management platform" },
   { to: "/about", title: "About", desc: "How we work" },
 ];
 
@@ -106,17 +108,24 @@ export default function NotFoundPage() {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 12, width: "100%", marginTop: "clamp(16px,3vw,32px)" }}>
-            {LINKS.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="nf-link-card"
-                style={{ display: "flex", flexDirection: "column", gap: 5, textAlign: "left", background: "#fff", border: "1px solid #EDEFF4", borderRadius: 14, padding: "16px 18px" }}
-              >
-                <span style={{ fontSize: 15, fontWeight: 600, color: "#212121", letterSpacing: "-.015em" }}>{link.title}</span>
-                <span style={{ fontSize: 13.5, lineHeight: 1.5, color: "#8F918F" }}>{link.desc}</span>
-              </Link>
-            ))}
+            {LINKS.map((link) => {
+              const cardStyle: React.CSSProperties = { display: "flex", flexDirection: "column", gap: 5, textAlign: "left", background: "#fff", border: "1px solid #EDEFF4", borderRadius: 14, padding: "16px 18px" };
+              const content = (
+                <>
+                  <span style={{ fontSize: 15, fontWeight: 600, color: "#212121", letterSpacing: "-.015em" }}>{link.title}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.5, color: "#8F918F" }}>{link.desc}</span>
+                </>
+              );
+              return link.href ? (
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="nf-link-card" style={cardStyle}>
+                  {content}
+                </a>
+              ) : (
+                <Link key={link.to} to={link.to!} className="nf-link-card" style={cardStyle}>
+                  {content}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </main>

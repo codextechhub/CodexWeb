@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import MarketingHeader from "../../components/MarketingHeader";
 import MarketingFooter from "../../components/MarketingFooter";
 import { useReveal } from "../../hooks/useReveal";
+import { XVS_URL } from "../../xvsLink";
 import "../../components/marketing.css";
 
 const WHAT_WE_BUILD = [
@@ -175,7 +176,8 @@ export default function AboutPage() {
                 <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: "rgba(255,255,255,.55)" }}>Shipping now</span>
               </div>
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: "rgba(255,255,255,.78)" }}>XVS — the complete operating system for schools.</p>
-              <Link to="/xvs" className="mkt-link" style={{ fontSize: 14.5, fontWeight: 500, color: "#DBE0EB" }}>See the platform →</Link>
+              {/* XVS lives on its own domain — link goes there, not to an internal route */}
+              <a href={XVS_URL} target="_blank" rel="noopener noreferrer" className="mkt-link" style={{ fontSize: 14.5, fontWeight: 500, color: "#DBE0EB" }}>See the platform →</a>
             </div>
           </div>
         </div>

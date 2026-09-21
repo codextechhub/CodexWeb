@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { XVS_URL } from "../xvsLink";
 import "./marketing.css";
 
 interface MarketingFooterProps {
@@ -60,7 +61,8 @@ export default function MarketingFooter({ page }: MarketingFooterProps) {
             {showAllProducts && (
               <Link to="/products" className="mkt-link" style={{ fontSize: 15, color: "#555654" }}>All products</Link>
             )}
-            <Link to="/xvs" className="mkt-link" style={{ fontSize: 15, color: "#555654" }}>XVS</Link>
+            {/* XVS lives on its own domain — link goes there, not to an internal route */}
+            <a href={XVS_URL} target="_blank" rel="noopener noreferrer" className="mkt-link" style={{ fontSize: 15, color: "#555654" }}>XVS</a>
           </div>
 
           <div style={{ flex: "0 1 160px", minWidth: 140, display: "flex", flexDirection: "column", gap: 13 }}>
