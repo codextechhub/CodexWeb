@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { EMAIL_ERROR, sendEnquiry } from "../../lib/emailjs";
 /**
  * Ported (near-verbatim) from the CodeX home page's original imperative
  * behavior script authored in Claude Design. It drives the static markup
@@ -790,17 +791,50 @@ class HomeBehavior {
 
   _bindSubmit() {
     if (!this._form) return;
-    this._form.addEventListener("submit", (e: Event) => {
+    const onSubmit = async (e: Event) => {
       e.preventDefault();
+      if (this._sending || this.state.submitted) return;
       if (!this._validateAll()) return;
-      this.state.submitted = true;
       const label = this._form!.querySelector("[data-submit-label]");
       const note = this.root.querySelector("[data-form-note]");
-      if (label) label.textContent = "Request received";
-      if (note) note.textContent = "Thanks — we reply within one business day.";
       const btn = this._form!.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      const data = new FormData(this._form);
+      this._sending = true;
+      this._form.setAttribute("aria-busy", "true");
       if (btn) btn.disabled = true;
-    });
+      if (label) label.textContent = "Sending...";
+      if (note) {
+        note.setAttribute("role", "status");
+        note.textContent = "Sending your request...";
+      }
+      try {
+        await sendEnquiry({
+          name: String(data.get("name") || ""),
+          organization: String(data.get("organization") || ""),
+          email: String(data.get("email") || ""),
+          phone: String(data.get("phone") || ""),
+          message: String(data.get("message") || ""),
+          reason: "Demo",
+          form_name: "Homepage demo form",
+        });
+        this.state.submitted = true;
+        if (label) label.textContent = "Request received";
+        if (note) note.textContent = "Thanks — we reply within one business day.";
+      } catch (err) {
+        console.error("[home demo form] send failed", err);
+        if (label) label.textContent = "Request a demo";
+        if (note) {
+          note.setAttribute("role", "alert");
+          note.textContent = EMAIL_ERROR;
+        }
+      } finally {
+        this._sending = false;
+        this._form.setAttribute("aria-busy", "false");
+        if (btn) btn.disabled = this.state.submitted;
+      }
+    };
+    this._form.addEventListener("submit", onSubmit);
+    this._offSubmit = () => this._form.removeEventListener("submit", onSubmit);
   }
 
   _validateAll() {
@@ -814,6 +848,7 @@ class HomeBehavior {
   }
 
   componentWillUnmount() {
+    if (this._offSubmit) this._offSubmit();
     this.root.querySelectorAll('[data-clone="1"]').forEach((n) => n.remove());
     this._clearTimers();
     this._clearMarquee();

@@ -1,0 +1,27 @@
+<!--
+EMAILJS DASHBOARD SETUP (these are template settings, not part of the email):
+Email Templates > Create New Template > Content > edit HTML / Code Editor.
+Paste this entire file into the HTML editor, then save.
+To Email: sales@codex.com
+Subject: CodeX enquiry: {{reason}} from {{name}}
+From Name: CodeX Website
+From Email: use the default address of your connected Gmail service
+Reply To: {{email}}
+See emailjs-setup.md for the complete walkthrough.
+Keep the double braces exactly as written; the website supplies their values.
+-->
+<div style="font-family:Arial,sans-serif;color:#212121;line-height:1.6;max-width:640px">
+  <h2>New CodeX website enquiry</h2>
+  <p><strong>Form:</strong> {{form_name}}</p>
+  <p><strong>Enquiry type:</strong> {{reason}}</p>
+  <p><strong>Full name:</strong> {{name}}</p>
+  <p><strong>Organization:</strong> {{organization}}</p>
+  <p><strong>Work email:</strong> {{email}}</p>
+  <p><strong>Phone:</strong> {{phone}}</p>
+  <p><strong>Operation size:</strong> {{scale}}</p>
+  <p><strong>Message / what they would like to cover:</strong></p>
+  <div style="white-space:pre-wrap;background:#f5f6f8;padding:16px;border-radius:8px">{{message}}</div>
+  <p><strong>Submitted from:</strong> {{page_url}}</p>
+  <hr>
+  <p>Use Reply to respond to the visitor's work email.</p>
+</div>

@@ -1,5 +1,13 @@
 # React + TypeScript + Vite
 
+## Website email setup
+
+The homepage demo and contact forms send enquiries through EmailJS. Follow the
+[dashboard setup guide](docs/emailjs-setup.md) and copy the
+[complete email template](docs/emailjs-template.html) into EmailJS to send all
+form details to **sales@codex.com**. Copy `.env.example` to `.env.local`, fill in
+your service ID, template ID and public key, then restart the dev server.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:

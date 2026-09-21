@@ -2,6 +2,7 @@ import { useRef, useState, type FormEvent } from "react";
 import MarketingHeader from "../../components/MarketingHeader";
 import MarketingFooter from "../../components/MarketingFooter";
 import { useReveal } from "../../hooks/useReveal";
+import { EMAIL_ERROR, sendEnquiry } from "../../lib/emailjs";
 import "../../components/marketing.css";
 
 type Reason = "Demo" | "Question" | "Partnership";
@@ -68,6 +69,9 @@ export default function ContactPage() {
   const [touched, setTouched] = useState<Partial<Record<keyof Fields, boolean>>>({});
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
+  const sendingRef = useRef(false);
 
   const errors = validate(fields);
   const shown = (name: keyof Fields) => (submitAttempted || touched[name] ? errors[name] : undefined);
@@ -86,11 +90,24 @@ export default function ContactPage() {
     setTimeout(() => firstInputRef.current?.focus({ preventScroll: true }), reduce ? 0 : 520);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (sendingRef.current || submitted) return;
     setSubmitAttempted(true);
     if (Object.keys(validate(fields)).length > 0) return;
-    setSubmitted(true);
+    sendingRef.current = true;
+    setSending(true);
+    setSendError("");
+    try {
+      await sendEnquiry({ ...fields, reason, form_name: "Contact form" });
+      setSubmitted(true);
+    } catch (err) {
+      console.error("[contact form] send failed", err);
+      setSendError(EMAIL_ERROR);
+    } finally {
+      sendingRef.current = false;
+      setSending(false);
+    }
   };
 
   return (
@@ -187,6 +204,7 @@ export default function ContactPage() {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
+            aria-busy={sending}
             style={{
               flex: "1 1 460px",
               minWidth: 0,
@@ -332,7 +350,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              disabled={submitted}
+              disabled={sending || submitted}
               className="mkt-cta-primary"
               style={{
                 height: 52,
@@ -347,9 +365,10 @@ export default function ContactPage() {
                 transition: "transform 200ms ease, box-shadow 200ms ease, background 200ms ease",
               }}
             >
-              {submitted ? "Message sent" : "Send message"}
+              {sending ? "Sending..." : submitted ? "Message sent" : "Send message"}
             </button>
-            <p style={{ margin: 0, fontSize: 12.5, lineHeight: 1.5, color: "#8F918F" }}>
+            {sendError && <p role="alert" style={fieldErrorStyle}>{sendError}</p>}
+            <p role="status" style={{ margin: 0, fontSize: 12.5, lineHeight: 1.5, color: "#8F918F" }}>
               {submitted ? "Thanks — we reply within one business day." : "We use these details only to reply to you."}
             </p>
           </form>
