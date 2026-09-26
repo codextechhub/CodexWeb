@@ -1,0 +1,671 @@
+/* ═══════════════════════════════════════════════════════════
+   CodeX About page styles — scoped under `.about`.
+   Colours, buttons, headings and the scroll-reveal come from
+   src/components/shared/shared.css (edit the tokens there to
+   change CodeX colours on every page).
+
+   Sections, in page order:
+     1. Hero (+ screenshot fan, facts)   5. Values (dark)
+     2. Mission & vision                 6. Team
+     3. Story timeline + quote           7. Gallery strip
+     4. How we engage                    8. Closing CTA
+     9. Responsive: iPad → phone
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. Hero ──────────────────────────────────────────────── */
+.about-hero {
+  position: relative;
+  padding: clamp(48px, 7vw, 96px) 0 clamp(40px, 5vw, 64px);
+  overflow: hidden;
+  isolation: isolate;
+}
+.about-hero-glow {
+  position: absolute;
+  z-index: -1;
+  top: -30%;
+  right: -10%;
+  width: 70%;
+  height: 900px;
+  background: radial-gradient(closest-side, rgba(74, 101, 157, 0.2), transparent),
+    radial-gradient(40% 40% at 20% 60%, rgba(159, 180, 226, 0.25), transparent 70%);
+  animation: about-drift 20s ease-in-out infinite alternate;
+}
+@keyframes about-drift {
+  to {
+    transform: translate3d(-40px, 30px, 0) scale(1.08);
+  }
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+.about-hero h1 {
+  font-size: clamp(40px, 4.7vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  text-wrap: pretty; /* fill lines normally instead of balancing */
+}
+.about-hero h1 > span,
+.about-hero h1 > em {
+  display: inline;
+}
+/* ✏️ The blue gradient on the second half of the headline */
+.about-hero h1 em {
+  font-style: normal;
+  background: linear-gradient(100deg, #2f4474 0%, #4a659d 45%, #7d97cf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.about-hero-body {
+  margin-top: 26px;
+  max-width: 540px;
+  font-size: clamp(17px, 1.6vw, 19.5px);
+  line-height: 1.62;
+  color: var(--muted);
+}
+
+/* Screenshot fan — spreads apart as the page scrolls (--page-scroll 0→1) */
+.about-fan {
+  --s: var(--page-scroll, 0);
+  position: relative;
+  aspect-ratio: 1 / 0.86;
+}
+.about-fan-card {
+  position: absolute;
+  margin: 0;
+  width: 80%;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(15, 21, 36, 0.08);
+  box-shadow: 0 30px 60px -24px rgba(15, 21, 36, 0.35), 0 8px 18px -8px rgba(47, 68, 116, 0.2);
+  will-change: transform;
+}
+.about-fan-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.about-fan-card-1 {
+  z-index: 3;
+  left: 0;
+  top: 30%;
+  transform: rotate(-4deg) translate(calc(var(--s) * -28px), calc(var(--s) * 18px));
+}
+.about-fan-card-2 {
+  z-index: 2;
+  right: 0;
+  top: 2%;
+  transform: rotate(4deg) translate(calc(var(--s) * 28px), calc(var(--s) * -24px));
+}
+.about-fan-card-3 {
+  z-index: 1;
+  right: 6%;
+  bottom: 0;
+  width: 62%;
+  transform: rotate(-1deg) translateY(calc(var(--s) * 40px));
+}
+
+/* Quick facts strip */
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: clamp(56px, 7vw, 96px) 0 0;
+  border-top: 1px solid var(--line);
+}
+.about-fact {
+  padding: 22px 22px 0 0;
+}
+.about-fact dt {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a8f9c;
+}
+.about-fact dd {
+  margin: 8px 0 0;
+  font-size: clamp(17px, 1.7vw, 21px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ── 2. Mission & vision ─────────────────────────────────── */
+.about-mission {
+  padding-top: clamp(40px, 5vw, 64px);
+}
+.about-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.mission-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  min-height: 300px;
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.mission-card.is-brand {
+  border: 0;
+  color: #fff;
+  background: radial-gradient(80% 90% at 100% 0%, #6f8bc6 0%, transparent 60%), linear-gradient(150deg, #4a659d 0%, #2f4474 100%);
+  box-shadow: 0 30px 60px -30px rgba(47, 68, 116, 0.6);
+}
+.mission-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+.mission-card.is-brand .mission-label {
+  color: #c9d6f2;
+}
+.mission-text {
+  font-size: clamp(24px, 2.7vw, 34px);
+  line-height: 1.22;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.mission-card.is-brand .mission-text {
+  color: #fff;
+}
+
+/* ── 3. Story timeline + quote ───────────────────────────── */
+.about-story {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.about-story-heading {
+  position: sticky;
+  top: 120px;
+}
+.story-steps {
+  position: relative;
+}
+.story-steps ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+.story-track {
+  position: absolute;
+  left: 19px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+.story-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #7d97cf, var(--brand));
+  transform-origin: top;
+  transform: scaleY(var(--progress, 0));
+}
+.story-step {
+  position: relative;
+  padding-left: 68px;
+}
+.story-dot {
+  position: absolute;
+  left: 0;
+  top: -4px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--brand);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand);
+  box-shadow: 0 0 0 6px var(--paper);
+}
+.story-year {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--brand-soft);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand);
+}
+.story-step h3 {
+  font-size: clamp(21px, 2vw, 25px);
+  margin-bottom: 10px;
+}
+.story-step p {
+  font-size: 16.5px;
+  line-height: 1.68;
+  color: var(--muted);
+}
+
+.about-quote {
+  max-width: 980px;
+  margin: clamp(88px, 11vw, 150px) auto 0;
+  text-align: center;
+}
+.about-quote-mark {
+  color: #c9d4ee;
+  margin-bottom: 28px;
+}
+.about-quote blockquote {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 50px);
+  line-height: 1.18;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.about-quote-by {
+  margin-top: 28px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--brand);
+}
+
+/* ── 4. How we engage ─────────────────────────────────────── */
+.engage-grid {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+/* The line joining the four numbers (desktop only) */
+.engage-grid::before {
+  content: "";
+  position: absolute;
+  top: 48px;
+  left: 40px;
+  right: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--brand), #c9d4ee);
+}
+.engage-card {
+  position: relative;
+  height: 100%;
+  padding: 28px 24px 30px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  transition: transform 350ms var(--ease), box-shadow 350ms var(--ease);
+}
+.engage-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -24px rgba(47, 68, 116, 0.35);
+}
+.engage-num {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 32px;
+  border-radius: 12px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 0 0 6px var(--bg);
+}
+.engage-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.engage-card p {
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: var(--muted);
+}
+
+/* ── 5. Values (dark) ─────────────────────────────────────── */
+.about-values {
+  background: var(--night);
+  overflow: hidden;
+  isolation: isolate;
+}
+.about-values-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(45% 50% at 100% 0%, rgba(74, 101, 157, 0.5), transparent 70%),
+    radial-gradient(35% 40% at 0% 100%, rgba(74, 101, 157, 0.25), transparent 70%);
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.value-card {
+  height: 100%;
+  padding: clamp(28px, 3vw, 36px);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: border-color 300ms ease, transform 350ms var(--ease);
+}
+.value-card:hover {
+  border-color: rgba(159, 180, 226, 0.45);
+  transform: translateY(-4px);
+}
+.value-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 48px;
+  border-radius: 14px;
+  background: rgba(125, 151, 207, 0.16);
+  color: #b7c7ea;
+}
+.value-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.value-card p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #a3abbe;
+}
+
+/* ── 6. Team ──────────────────────────────────────────────── */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.person-card {
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.person-photo {
+  aspect-ratio: 4 / 4.4;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, var(--brand-soft), #dbe3f3);
+}
+.person-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.person-initials {
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--brand);
+}
+.person-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+}
+.person-info h3 {
+  font-size: 18px;
+}
+.person-info p {
+  margin-top: 3px;
+  font-size: 14.5px;
+  color: var(--muted);
+}
+.person-link {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  color: var(--brand);
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.team-card {
+  height: 100%;
+  padding: 28px 24px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.team-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 36px;
+  border-radius: 13px;
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+.team-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.team-card p {
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: var(--muted);
+}
+
+/* ── 7. Gallery strip ─────────────────────────────────────── */
+.about-gallery {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+.gallery-heading {
+  max-width: 640px;
+  margin: 0 auto clamp(40px, 5vw, 64px);
+  text-align: center;
+}
+.gallery-heading h2 {
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.05;
+}
+.gallery-heading p {
+  margin-top: 16px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.gallery-strip {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.gallery-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  /* ✏️ Speed of the strip: bigger number = slower */
+  animation: about-marquee 70s linear infinite;
+}
+.gallery-strip:hover .gallery-track {
+  animation-play-state: paused;
+}
+.gallery-item {
+  margin: 0;
+  width: clamp(280px, 34vw, 500px);
+}
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 40px -24px rgba(15, 21, 36, 0.3);
+}
+.gallery-item figcaption {
+  margin-top: 14px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--muted);
+}
+@keyframes about-marquee {
+  to {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+/* ── 8. Closing CTA ───────────────────────────────────────── */
+.about-cta-wrap {
+  padding: clamp(24px, 4vw, 48px) 0 clamp(80px, 10vw, 128px);
+  background: var(--paper);
+}
+.about-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 64px);
+  border-radius: clamp(22px, 3vw, 32px);
+  text-align: center;
+  background: linear-gradient(150deg, #4a659d 0%, #2f4474 55%, #1b2747 100%);
+}
+.about-cta-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(50% 70% at 50% 0%, rgba(159, 180, 226, 0.45), transparent 70%);
+}
+.about-cta h2 {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: clamp(32px, 4.6vw, 54px);
+  line-height: 1.06;
+  color: #fff;
+}
+.about-cta p {
+  max-width: 520px;
+  margin: 20px auto 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #d0d9ee;
+}
+.about-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+/* ── 9. Responsive ────────────────────────────────────────── */
+
+/* iPad landscape & small laptops */
+@media (max-width: 1100px) {
+  .engage-grid,
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .engage-grid::before {
+    display: none;
+  }
+}
+
+/* iPad portrait */
+@media (max-width: 960px) {
+  .about-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-fan {
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .about-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .about-story-heading {
+    position: static;
+  }
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  .value-icon {
+    margin-bottom: 28px;
+  }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  .about-mission-grid,
+  .engage-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .mission-card {
+    min-height: 0;
+    gap: 28px;
+  }
+  .about-fan-card {
+    border-radius: 10px;
+  }
+  .story-step {
+    padding-left: 56px;
+  }
+  .story-steps ol {
+    gap: 36px;
+  }
+  .engage-num,
+  .team-icon {
+    margin-bottom: 22px;
+  }
+  .about-cta-actions {
+    flex-direction: column;
+  }
+  .about-cta-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Reduce motion: stop the gallery and drift (the rest is in shared.css) */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+    padding: 0 var(--gutter);
+  }
+  .gallery-item[aria-hidden="true"] {
+    display: none;
+  }
+}

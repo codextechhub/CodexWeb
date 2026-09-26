@@ -1,7 +1,11 @@
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
+import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 
 export default function XvsPage() {
+  // ✏️ Browser tab name — edit it in src/pageTitles.ts
+  usePageTitle(PAGE_TITLES.xvs);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100svh" }}>
       <SiteHeader />

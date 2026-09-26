@@ -1,47 +1,50 @@
-import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { HOME_MARKUP } from "./homeMarkup";
-import { initHomeBehavior } from "./homeBehavior";
+import MarketingHeader from "../../components/MarketingHeader";
+import MarketingFooter from "../../components/MarketingFooter";
+import Hero from "./sections/Hero";
+import Problem from "./sections/Problem";
+import Disciplines from "./sections/Disciplines";
+import XvsShowcase from "./sections/XvsShowcase";
+import DayTimeline from "./sections/DayTimeline";
+import Principles from "./sections/Principles";
+import DemoForm from "./sections/DemoForm";
+import "../../components/shared/shared.css";
 import "./home.css";
+import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 
 /**
- * The CodeX home page, reproduced exactly from the Claude Design artifact:
- * https://claude.ai/artifact/3NLBofAbxzwKMX8Za3z5r9
+ * The CodeX home page, told as a story in chapters:
  *
- * The markup is rendered verbatim (captured from the artifact's live DOM)
- * rather than hand-converted to JSX, so the design matches pixel-for-pixel.
- * `homeBehavior.ts` is a scoped port of the artifact's own interaction
- * script and drives the sticky nav, animated stat cards, capability
- * marquee, scroll reveals, and demo-form validation.
+ *   Hero          – who we are, with the XVS dashboard
+ *   Problem       – 01 · the system problem institutions live with
+ *   Disciplines   – 02 · what CodeX builds
+ *   XvsShowcase   – 03 · the flagship product, feature by feature
+ *   DayTimeline   – 04 · a school day on XVS
+ *   Principles    – 05 · how we work + platform numbers
+ *   DemoForm      – the call to action
+ *
+ * To change any text or image, edit ./content.ts.
+ * To restyle, edit ./home.css (organised by section, same order as above).
+ * To reorder or remove a chapter, move or delete its line below.
  */
 export default function HomePage() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
+  // ✏️ Browser tab name — edit it in src/pageTitles.ts
+  usePageTitle(PAGE_TITLES.home);
 
-  useEffect(() => {
-    if (!rootRef.current) return;
-    return initHomeBehavior(rootRef.current);
-  }, []);
-
-  // The markup's internal nav/footer links point at site-relative paths
-  // (e.g. "/products"). Intercept those so navigation stays client-side
-  // instead of doing a full page reload; same-page "#" anchors and
-  // external links pass through untouched.
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const anchor = (e.target as HTMLElement).closest("a");
-    if (!anchor) return;
-    const href = anchor.getAttribute("href") || "";
-    if (href.startsWith("/")) {
-      e.preventDefault();
-      navigate(href);
-    }
-  };
+  const scrollToDemo = () => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <div
-      ref={rootRef}
-      onClick={handleClick}
-      dangerouslySetInnerHTML={{ __html: HOME_MARKUP }}
-    />
+    <div className="site-page home">
+      <MarketingHeader active="/" demoHref="#demo" onDemoClick={scrollToDemo} />
+      <main>
+        <Hero />
+        <Problem />
+        <Disciplines />
+        <XvsShowcase />
+        <DayTimeline />
+        <Principles />
+        <DemoForm />
+      </main>
+      <MarketingFooter page="home" />
+    </div>
   );
 }

@@ -3,13 +3,21 @@ import { XVS_URL } from "../xvsLink";
 import "./marketing.css";
 
 interface MarketingFooterProps {
-  page: "products" | "contact" | "about";
+  page: "home" | "products" | "contact" | "about";
 }
 
+/**
+ * Per-page footer settings.
+ * ✏️ Footer link targets: "/contact#form" opens the Contact page scrolled
+ *    to the form (see src/components/ScrollManager.tsx); "/about" and
+ *    "/products" open those pages at the top.
+ */
+const CONTACT_LINK = "/contact#form";
 const FOOTER_CONFIG = {
-  products: { muted: "#5C5D5C", aboutHref: "/about", contactHref: "/contact", showAllProducts: false },
-  contact: { muted: "#8F918F", aboutHref: "/about", contactHref: "#top", showAllProducts: true },
-  about: { muted: "#8F918F", aboutHref: "#top", contactHref: "/contact", showAllProducts: true },
+  home: { muted: "#8F918F", aboutHref: "/about", contactHref: CONTACT_LINK, showAllProducts: true },
+  products: { muted: "#8F918F", aboutHref: "/about", contactHref: CONTACT_LINK, showAllProducts: true },
+  contact: { muted: "#8F918F", aboutHref: "/about", contactHref: CONTACT_LINK, showAllProducts: true },
+  about: { muted: "#8F918F", aboutHref: "/about", contactHref: CONTACT_LINK, showAllProducts: true },
 } as const;
 
 const LOGO = (

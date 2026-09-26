@@ -13,7 +13,7 @@ const NAV_LINKS = [
 interface MarketingHeaderProps {
   /** Path of the page this header is rendered on, so its own nav link reads as active. */
   active: "/" | "/products" | "/about" | "/contact";
-  /** Where the "Book a Demo" pill goes. Defaults to the contact page. */
+  /** Where the "Book a Demo" pill goes. Defaults to the form on the contact page. */
   demoHref?: string;
   onDemoClick?: () => void;
 }
@@ -25,7 +25,7 @@ interface MarketingHeaderProps {
  */
 export default function MarketingHeader({
   active,
-  demoHref = "/contact",
+  demoHref = "/contact#form",
   onDemoClick,
 }: MarketingHeaderProps) {
   const [open, setOpen] = useState(false);

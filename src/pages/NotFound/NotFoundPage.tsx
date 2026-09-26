@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { XVS_URL } from "../../xvsLink";
 import "../../components/marketing.css";
 import "./notFound.css";
+import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 
 const LINKS = [
   { to: "/products", title: "Products", desc: "The CodeX portfolio" },
@@ -11,6 +12,9 @@ const LINKS = [
 ];
 
 export default function NotFoundPage() {
+  // ✏️ Browser tab name — edit it in src/pageTitles.ts
+  usePageTitle(PAGE_TITLES.notFound);
+
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", overflow: "clip", background: "#FBFBFC", color: "#212121" }}>
       <header style={{ flex: "none", borderBottom: "1px solid #EDEFF4", background: "#fff" }}>
