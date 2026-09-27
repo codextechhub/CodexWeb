@@ -77,7 +77,7 @@ export default function Hero() {
       </div>
 
       <div className="audience" aria-label="Built for">
-        <p className="audience-title">Built for the people who run institutions</p>
+        <p className="audience-title">Built for the people who run organizations</p>
         <div className="marquee">
           {/* The list is rendered twice so the loop is seamless. */}
           <div className="marquee-track">

@@ -1,4 +1,4 @@
-import SiteHeader from "../../components/SiteHeader";
+import MarketingHeader from "../../components/MarketingHeader";
 import SiteFooter from "../../components/SiteFooter";
 import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 
@@ -8,8 +8,8 @@ export default function XvsPage() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100svh" }}>
-      <SiteHeader />
-      <main style={{ flex: "1 1 auto", padding: "80px 24px" }}>
+      <MarketingHeader />
+      <main style={{ flex: "1 1 auto", padding: "calc(var(--mkt-header-h) + 80px) 24px 80px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
           <span
             style={{

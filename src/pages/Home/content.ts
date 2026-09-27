@@ -20,32 +20,32 @@ export const IMAGES = {
 /* ── 1. HERO ─────────────────────────────────────────────── */
 export const HERO = {
   eyebrow: "CodeX Technologies · Lagos, Nigeria",
-  titleLines: ["Institutions run on records.", "We make them agree."],
+  titleLines: ["Organizations run on data.", "We make it agree."],
   body:
-    "CodeX builds the data platforms and organizational systems that schools and institutions run on: one source of truth, permissioned end to end, and designed around how the work actually happens.",
-  primaryCta: { label: "Book a demo", href: "#demo" },
+    "CodeX builds the data platforms and organizational systems that businesses and institutions run on: one source of truth, permissioned end to end, and designed around how the work actually happens.",
+  primaryCta: { label: "Contact CodeX", href: "#contact" },
   secondaryCta: { label: "Meet XVS", href: "#xvs" },
   image: IMAGES.schoolDashboard,
   imageAlt: "XVS school dashboard showing term progress, students on roll and pending approvals",
   /** Small floating cards around the hero screenshot. */
   chips: [
-    { label: "Term progress", value: "45% taught" },
+    { label: "Records", value: "One source of truth" },
     { label: "Approvals", value: "7 awaiting you" },
     { label: "Audit trail", value: "Every change recorded" },
   ],
 };
 
-/** The scrolling band under the hero: who XVS is built for. */
+/** The scrolling band under the hero: who CodeX builds for. */
 export const AUDIENCE = [
-  "Proprietors",
-  "Principals",
-  "Bursars",
-  "Registrars",
+  "Founders & owners",
+  "Executives",
+  "Finance teams",
+  "Operations managers",
   "Branch heads",
-  "Teachers",
+  "HR & admin",
   "Procurement officers",
   "Auditors",
-  "Parents",
+  "Boards",
 ];
 
 /* ── 2. THE PROBLEM (chapter 01) ─────────────────────────── */
@@ -54,11 +54,11 @@ export const PROBLEM = {
   label: "The problem",
   /** Words light up one by one as the visitor scrolls. */
   statement:
-    "Most organizations do not have a data problem. They have a system problem: fees in one spreadsheet, attendance on paper, approvals lost in a group chat, and nobody who can say who changed what, or when.",
+    "Most organizations do not have a data problem. They have a system problem: sales in one spreadsheet, inventory on paper, approvals lost in a group chat, and nobody who can say who changed what, or when.",
   pains: [
     {
       title: "Records that disagree",
-      body: "The bursar's number and the registrar's number never match, so every report starts with a reconciliation.",
+      body: "Finance has one number, operations has another, and they never match — so every report starts with a reconciliation.",
     },
     {
       title: "Approvals in the chat",
@@ -194,7 +194,7 @@ export const PRINCIPLES = {
     },
     {
       title: "Designed for real operations",
-      body: "We build alongside the registrar, the bursar and the branch head, because the exceptions they handle daily are what software usually gets wrong.",
+      body: "We build alongside the finance officer, the operations manager and the branch head, because the exceptions they handle daily are what software usually gets wrong.",
     },
   ],
 };
@@ -208,17 +208,19 @@ export const STATS = [
   { value: 100, suffix: "%", label: "of finance changes on the audit trail" },
 ];
 
-/* ── 8. DEMO / CONTACT ───────────────────────────────────── */
-export const DEMO = {
-  label: "Let's talk",
-  title: "Tell us how your records sit today.",
+/* ── 8. CONTACT ──────────────────────────────────────────── */
+export const CONTACT = {
+  label: "Contact CodeX",
+  title: "Let's talk about what you need.",
   body:
-    "A demo runs about forty minutes, walks through XVS on real workflows, and ends with a straight answer on fit.",
+    "A new project, a partnership, support, or just a question about how we work — send us a note and the CodeX team will get back to you.",
   bullets: [
-    "A walkthrough on your own structure",
-    "Migration and data-import questions answered",
-    "No obligation, no sales script",
+    "New projects and custom systems",
+    "Partnerships and collaborations",
+    "Support and general questions",
   ],
-  submitLabel: "Request a demo",
-  successMessage: "Request sent. Thanks — we reply within one business day.",
+  messageLabel: "How can we help?",
+  messagePlaceholder: "Tell us a little about what you need…",
+  submitLabel: "Send message",
+  successMessage: "Message sent. Thanks — we reply within one business day.",
 };

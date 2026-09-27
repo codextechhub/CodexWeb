@@ -24,17 +24,9 @@ export default function ContactPage() {
   // ✏️ Browser tab name — edit it in src/pageTitles.ts
   usePageTitle(PAGE_TITLES.contact);
 
-  // "Book a Demo" in the header scrolls to the form and focuses the first field.
-  const scrollToForm = () => {
-    const form = document.getElementById("form");
-    if (!form) return;
-    form.scrollIntoView({ behavior: "smooth", block: "start" });
-    setTimeout(() => document.getElementById("ct-name")?.focus({ preventScroll: true }), 500);
-  };
-
   return (
     <div className="site-page contact">
-      <MarketingHeader active="/contact" demoHref="#form" onDemoClick={scrollToForm} />
+      <MarketingHeader active="/contact" />
 
       <main>
         {/* ── Hero ── */}

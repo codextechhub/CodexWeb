@@ -34,7 +34,7 @@ export default function AboutPage() {
 
   return (
     <div className="site-page about">
-      <MarketingHeader active="/about" demoHref="/contact#form" />
+      <MarketingHeader active="/about" />
       <main>
         <Hero />
         <Mission />

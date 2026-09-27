@@ -17,11 +17,11 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  /* inset + rounded, so the header above always sits on the light page */
+  /* runs up behind the floating header; inset, rounded at the bottom */
   margin: 0 clamp(8px, 1.6vw, 20px);
-  border-radius: clamp(20px, 3vw, 32px);
-  /* extra bottom padding = room for the form card to float over */
-  padding: clamp(56px, 8vw, 104px) 0 clamp(150px, 16vw, 200px);
+  border-radius: 0 0 clamp(20px, 3vw, 32px) clamp(20px, 3vw, 32px);
+  /* top: clear the header; extra bottom padding = room for the form card to float over */
+  padding: calc(var(--mkt-header-h, 0px) + clamp(56px, 8vw, 104px)) 0 clamp(150px, 16vw, 200px);
   /* ✏️ Banner colours (CodeX blue → deep navy) */
   background: linear-gradient(160deg, #4a659d 0%, #2f4474 45%, #16203b 100%);
   color: #fff;

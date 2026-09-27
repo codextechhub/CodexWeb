@@ -3,7 +3,7 @@ import { XVS_URL } from "../xvsLink";
 import "./marketing.css";
 
 interface MarketingFooterProps {
-  page: "home" | "products" | "contact" | "about";
+  page: "home" | "products" | "contact" | "about" | "blog";
 }
 
 /**
@@ -18,6 +18,7 @@ const FOOTER_CONFIG = {
   products: { muted: "#8F918F", aboutHref: "/about", contactHref: CONTACT_LINK, showAllProducts: true },
   contact: { muted: "#8F918F", aboutHref: "/about", contactHref: CONTACT_LINK, showAllProducts: true },
   about: { muted: "#8F918F", aboutHref: "/about", contactHref: CONTACT_LINK, showAllProducts: true },
+  blog: { muted: "#8F918F", aboutHref: "/about", contactHref: CONTACT_LINK, showAllProducts: true },
 } as const;
 
 const LOGO = (
@@ -61,6 +62,7 @@ export default function MarketingFooter({ page }: MarketingFooterProps) {
           <div style={{ flex: "0 1 160px", minWidth: 140, display: "flex", flexDirection: "column", gap: 13 }}>
             <p style={label(muted)}>Company</p>
             <Link to={aboutHref} className="mkt-link" style={{ fontSize: 15, color: "#555654" }}>About</Link>
+            <Link to="/blog" className="mkt-link" style={{ fontSize: 15, color: "#555654" }}>Blog</Link>
             <Link to={contactHref} className="mkt-link" style={{ fontSize: 15, color: "#555654" }}>Contact</Link>
           </div>
 

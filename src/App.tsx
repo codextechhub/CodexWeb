@@ -4,6 +4,8 @@ import ProductsPage from "./pages/Products/ProductsPage";
 import AboutPage from "./pages/About/AboutPage";
 import ContactPage from "./pages/Contact/ContactPage";
 import XvsPage from "./pages/Xvs/XvsPage";
+import BlogPage from "./pages/Blog/BlogPage";
+import BlogPostPage from "./pages/Blog/BlogPostPage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import ScrollManager from "./components/ScrollManager";
 
@@ -17,6 +19,8 @@ function App() {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/xvs" element={<XvsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

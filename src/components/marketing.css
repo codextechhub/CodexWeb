@@ -13,25 +13,145 @@ a:hover {
   color: #3b5482;
 }
 
+/* ── Header: floating bar (after wrkhq.com) ──
+ * The header overlays the top of the page (negative margin-bottom), so each
+ * page's hero background — the blue grid — runs up behind it. Heroes add
+ * var(--mkt-header-h) to their top padding to clear it.
+ */
+:root {
+  --mkt-header-h: 84px;
+}
+.mkt-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  height: var(--mkt-header-h);
+  margin-bottom: calc(-1 * var(--mkt-header-h));
+  padding: 16px 24px 0;
+  box-sizing: border-box;
+}
+.mkt-header-bar {
+  max-width: 1152px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0 24px;
+  padding: 12px 12px 12px 24px;
+  border-radius: 12px;
+  /* At the top of the page: see-through, so the hero grid shows. */
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(74, 101, 157, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+}
+/* Once the page scrolls: solid white. */
+.mkt-header-bar.is-scrolled {
+  background: #fff;
+  border-color: #edeff4;
+  box-shadow: 0 8px 28px rgba(33, 33, 33, 0.08), 0 1px 2px rgba(33, 33, 33, 0.06);
+}
+.mkt-header-logo {
+  display: flex;
+  align-items: center;
+  justify-self: start;
+}
 .mkt-nav-links {
   display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mkt-header-link {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #212121;
+  transition: color 180ms ease, background 180ms ease;
+}
+.mkt-header-link:hover {
+  color: #4a659d;
+  background: rgba(74, 101, 157, 0.06);
+}
+/* The page you're on. */
+.mkt-header-link.is-active {
+  color: #4a659d;
+  background: #e6ecf7;
+  font-weight: 600;
+}
+.mkt-header-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mkt-header-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #4a659d;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(48, 58, 81, 0.16);
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+.mkt-header-cta:hover {
+  background: #41598c;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(74, 101, 157, 0.28);
 }
 .mkt-nav-toggle {
   display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 8px;
+  background: #e6ecf7;
+  color: #4a659d;
+  cursor: pointer;
 }
 .mkt-nav-panel {
   display: none;
+  grid-column: 1 / -1;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 12px;
+  padding: 8px 12px 4px 0;
+  border-top: 1px solid #edeff4;
 }
 .mkt-nav-panel.is-open {
   display: flex;
 }
+/* An open menu always gets the solid bar, even at the top of the page. */
+.mkt-header-bar:has(.mkt-nav-panel.is-open) {
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(33, 33, 33, 0.08);
+}
 
-@media (max-width: 759px) {
-  .mkt-nav-links {
+@media (max-width: 859px) {
+  :root {
+    --mkt-header-h: 76px;
+  }
+  .mkt-nav-links,
+  .mkt-nav-desktop {
     display: none;
   }
   .mkt-nav-toggle {
     display: flex;
+  }
+  .mkt-header {
+    padding: 12px 16px 0;
+  }
+  .mkt-header-bar {
+    grid-template-columns: 1fr auto;
+    padding: 10px 10px 10px 18px;
   }
 }
 

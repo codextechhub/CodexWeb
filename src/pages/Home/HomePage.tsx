@@ -6,7 +6,7 @@ import Disciplines from "./sections/Disciplines";
 import XvsShowcase from "./sections/XvsShowcase";
 import DayTimeline from "./sections/DayTimeline";
 import Principles from "./sections/Principles";
-import DemoForm from "./sections/DemoForm";
+import ContactSection from "./sections/ContactSection";
 import "../../components/shared/shared.css";
 import "./home.css";
 import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
@@ -20,7 +20,7 @@ import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
  *   XvsShowcase   – 03 · the flagship product, feature by feature
  *   DayTimeline   – 04 · a school day on XVS
  *   Principles    – 05 · how we work + platform numbers
- *   DemoForm      – the call to action
+ *   ContactSection – "Contact CodeX" form, the call to action
  *
  * To change any text or image, edit ./content.ts.
  * To restyle, edit ./home.css (organised by section, same order as above).
@@ -30,11 +30,9 @@ export default function HomePage() {
   // ✏️ Browser tab name — edit it in src/pageTitles.ts
   usePageTitle(PAGE_TITLES.home);
 
-  const scrollToDemo = () => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
-
   return (
     <div className="site-page home">
-      <MarketingHeader active="/" demoHref="#demo" onDemoClick={scrollToDemo} />
+      <MarketingHeader active="/" />
       <main>
         <Hero />
         <Problem />
@@ -42,7 +40,7 @@ export default function HomePage() {
         <XvsShowcase />
         <DayTimeline />
         <Principles />
-        <DemoForm />
+        <ContactSection />
       </main>
       <MarketingFooter page="home" />
     </div>

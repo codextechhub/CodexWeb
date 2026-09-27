@@ -15,9 +15,21 @@
 /* ── 1. Hero ──────────────────────────────────────────────── */
 .about-hero {
   position: relative;
-  padding: clamp(48px, 7vw, 96px) 0 clamp(40px, 5vw, 64px);
+  /* the header overlays the top of the page, so clear it too */
+  padding: calc(var(--mkt-header-h, 0px) + clamp(48px, 7vw, 96px)) 0 clamp(40px, 5vw, 64px);
   overflow: hidden;
   isolation: isolate;
+}
+/* The blue grid behind the hero, same as Home and Products. */
+.about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(rgba(74, 101, 157, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 101, 157, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 60% 25%, #000 25%, transparent 75%);
 }
 .about-hero-glow {
   position: absolute;

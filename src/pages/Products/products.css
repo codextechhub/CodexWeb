@@ -13,7 +13,8 @@
 /* ── 1. Hero ──────────────────────────────────────────────── */
 .prod-hero {
   position: relative;
-  padding: clamp(56px, 8vw, 104px) 0 clamp(40px, 5vw, 64px);
+  /* the header overlays the top of the page, so clear it too */
+  padding: calc(var(--mkt-header-h, 0px) + clamp(56px, 8vw, 104px)) 0 clamp(40px, 5vw, 64px);
   text-align: center;
   overflow: hidden;
   isolation: isolate;

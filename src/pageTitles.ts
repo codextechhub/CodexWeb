@@ -19,6 +19,7 @@ export const PAGE_TITLES = {
   products: "Products — CodeX",
   about: "About — CodeX",
   contact: "Contact — CodeX",
+  blog: "Blog — CodeX",
   xvs: "XVS — School management platform | CodeX",
   notFound: "Page not found — CodeX",
 };

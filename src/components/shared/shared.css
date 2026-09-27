@@ -35,7 +35,7 @@
 }
 
 .site-page main > section {
-  scroll-margin-top: 80px;
+  scroll-margin-top: calc(var(--mkt-header-h, 80px) + 16px);
 }
 
 /* :where() keeps these base rules at zero specificity, so any

@@ -1,67 +1,44 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useScrolled } from "../hooks/useScrolled";
+import { XVS_CONTACT_URL } from "../xvsLink";
 import "./marketing.css";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/products", label: "Products" },
   { to: "/about", label: "About" },
+  { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ];
 
+const DEMO_LABEL = "Book a demo with XVS";
+
 interface MarketingHeaderProps {
   /** Path of the page this header is rendered on, so its own nav link reads as active. */
-  active: "/" | "/products" | "/about" | "/contact";
-  /** Where the "Book a Demo" pill goes. Defaults to the form on the contact page. */
-  demoHref?: string;
-  onDemoClick?: () => void;
+  active?: "/" | "/products" | "/about" | "/blog" | "/contact";
 }
 
 /**
- * Full-fidelity header shared by the Products and Contact pages: sticky,
- * blurs in a background once the page scrolls, and collapses into a slide
- * panel under 760px.
+ * Site header modelled on wrkhq.com: a floating bar with the mark on the
+ * left, links centred and the CTA on the right. It overlays the top of the
+ * page so each hero's grid background runs up behind it; at the top the bar
+ * is see-through, and once the page scrolls it turns solid white. Collapses
+ * into a panel inside the bar under 860px.
  */
-export default function MarketingHeader({
-  active,
-  demoHref = "/contact#form",
-  onDemoClick,
-}: MarketingHeaderProps) {
+export default function MarketingHeader({ active }: MarketingHeaderProps) {
   const [open, setOpen] = useState(false);
   const scrolled = useScrolled(24);
 
   const closePanel = () => setOpen(false);
 
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 60,
-        transition:
-          "background 320ms ease, backdrop-filter 320ms ease, border-color 320ms ease, box-shadow 320ms ease",
-        background: scrolled ? "rgba(251,251,252,.78)" : "rgba(251,251,252,0)",
-        backdropFilter: scrolled ? "blur(14px)" : "none",
-        borderBottom: `1px solid ${scrolled ? "#EDEFF4" : "rgba(33,33,33,0)"}`,
-        boxShadow: scrolled ? "0 1px 3px rgba(48,58,81,.05)" : "none",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1240,
-          margin: "0 auto",
-          padding: "16px 24px",
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          gap: "16px 24px",
-        }}
-      >
-        <Link to="/" style={{ display: "flex", alignItems: "center", gap: 11, flex: "none" }}>
+    <header className="mkt-header">
+      <div className={`mkt-header-bar${scrolled ? " is-scrolled" : ""}`}>
+        <Link to="/" className="mkt-header-logo" aria-label="Home" onClick={closePanel}>
           <svg
-            width="36"
-            height="30"
+            width="34"
+            height="28"
             viewBox="0 0 30 25"
             fill="none"
             aria-hidden="true"
@@ -78,141 +55,64 @@ export default function MarketingHeader({
           </svg>
         </Link>
 
-        <button
-          type="button"
-          className="mkt-nav-toggle"
-          aria-label="Menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          style={{
-            marginLeft: "auto",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 44,
-            height: 44,
-            border: "1px solid #E3E6ED",
-            borderRadius: 11,
-            background: "#fff",
-            color: "#212121",
-            cursor: "pointer",
-            flex: "none",
-          }}
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-        </button>
-
-        <nav className="mkt-nav-links" style={{ marginLeft: "auto", alignItems: "center", gap: 30 }}>
+        <nav className="mkt-nav-links" aria-label="Main">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className="mkt-link"
-              style={{
-                fontSize: 15,
-                fontWeight: 500,
-                color: active === link.to ? "#212121" : "#555654",
-              }}
+              className={`mkt-header-link${active === link.to ? " is-active" : ""}`}
+              aria-current={active === link.to ? "page" : undefined}
             >
               {link.label}
             </Link>
           ))}
-          {onDemoClick ? (
-            <a
-              href={demoHref}
-              className="mkt-cta-pill"
-              onClick={(e) => {
-                e.preventDefault();
-                onDemoClick();
-              }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                background: "#4A659D",
-                color: "#fff",
-                fontSize: 15,
-                fontWeight: 500,
-                padding: "11px 20px",
-                borderRadius: 10,
-                boxShadow: "0 1px 2px rgba(48,58,81,.16)",
-                transition: "transform 200ms ease, box-shadow 200ms ease, background 200ms ease",
-              }}
-            >
-              Book a Demo
-            </a>
-          ) : (
-            <Link
-              to={demoHref}
-              className="mkt-cta-pill"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                background: "#4A659D",
-                color: "#fff",
-                fontSize: 15,
-                fontWeight: 500,
-                padding: "11px 20px",
-                borderRadius: 10,
-                boxShadow: "0 1px 2px rgba(48,58,81,.16)",
-                transition: "transform 200ms ease, box-shadow 200ms ease, background 200ms ease",
-              }}
-            >
-              Book a Demo
-            </Link>
-          )}
         </nav>
 
-        <div
-          className={`mkt-nav-panel${open ? " is-open" : ""}`}
-          style={{
-            width: "100%",
-            flexDirection: "column",
-            gap: 2,
-            paddingTop: 10,
-            borderTop: "1px solid #EDEFF4",
-          }}
-        >
+        <div className="mkt-header-actions">
+          <a
+            href={XVS_CONTACT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mkt-header-cta mkt-nav-desktop"
+          >
+            {DEMO_LABEL}
+          </a>
+
+          <button
+            type="button"
+            className="mkt-nav-toggle"
+            aria-label="Menu"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+              {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+            </svg>
+          </button>
+        </div>
+
+        <div className={`mkt-nav-panel${open ? " is-open" : ""}`}>
           {NAV_LINKS.map((link) => (
             <Link
               key={link.to}
               to={link.to}
               onClick={closePanel}
-              style={{
-                padding: "13px 4px",
-                fontSize: 16,
-                fontWeight: 500,
-                color: active === link.to ? "#212121" : "#555654",
-              }}
+              className={`mkt-header-link${active === link.to ? " is-active" : ""}`}
+              aria-current={active === link.to ? "page" : undefined}
+              style={{ padding: "12px 14px", fontSize: 16 }}
             >
               {link.label}
             </Link>
           ))}
           <a
-            href={demoHref}
-            onClick={(e) => {
-              closePanel();
-              if (onDemoClick) {
-                e.preventDefault();
-                onDemoClick();
-              }
-            }}
-            style={{
-              marginTop: 8,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              minHeight: 50,
-              background: "#4A659D",
-              color: "#fff",
-              fontSize: 16,
-              fontWeight: 500,
-              borderRadius: 11,
-            }}
+            href={XVS_CONTACT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closePanel}
+            className="mkt-header-cta"
+            style={{ marginTop: 8, justifyContent: "center", minHeight: 48, fontSize: 16 }}
           >
-            Book a Demo
+            {DEMO_LABEL}
           </a>
         </div>
       </div>
