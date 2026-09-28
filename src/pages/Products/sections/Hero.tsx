@@ -24,14 +24,14 @@ export default function Hero() {
         <p className="prod-hero-body load-in" style={{ "--delay": "340ms" } as CSSProperties}>
           {HERO.body}
         </p>
-        <ul className="prod-status load-in" style={{ "--delay": "440ms" } as CSSProperties}>
+        {/* <ul className="prod-status load-in" style={{ "--delay": "440ms" } as CSSProperties}>
           {HERO.status.map((s) => (
             <li key={s.label} className={s.live ? "is-live" : ""}>
               <span className="prod-status-dot" aria-hidden="true" />
               <strong>{s.count}</strong> {s.label}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </section>
   );

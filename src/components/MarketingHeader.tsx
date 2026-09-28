@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useScrolled } from "../hooks/useScrolled";
 import { XVS_CONTACT_URL } from "../xvsLink";
@@ -14,6 +14,18 @@ const NAV_LINKS = [
 
 const DEMO_LABEL = "Book a demo with XVS";
 
+/*
+ * Every page renders its own header, so the header is rebuilt on each
+ * navigation. These remember where the active pill was on the previous
+ * page, so the new header can start the pill there and slide it across.
+ */
+type PillBox = { x: number; y: number; w: number; h: number };
+let lastPill: PillBox | null = null;
+let lastActive: string | undefined;
+
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 interface MarketingHeaderProps {
   /** Path of the page this header is rendered on, so its own nav link reads as active. */
   active?: "/" | "/products" | "/about" | "/blog" | "/contact";
@@ -25,10 +37,85 @@ interface MarketingHeaderProps {
  * page so each hero's grid background runs up behind it; at the top the bar
  * is see-through, and once the page scrolls it turns solid white. Collapses
  * into a panel inside the bar under 860px.
+ *
+ * The active link sits on a light-blue pill. Moving between pages slides
+ * the pill from the old link to the new one (passing over any links in
+ * between), while the new link grows slightly and the old one shrinks back.
  */
 export default function MarketingHeader({ active }: MarketingHeaderProps) {
   const [open, setOpen] = useState(false);
   const scrolled = useScrolled(24);
+
+  const navRef = useRef<HTMLElement>(null);
+  const pillRef = useRef<HTMLSpanElement>(null);
+  // Read once, when this page's header first renders.
+  const [from] = useState(() => (lastActive !== active && !prefersReducedMotion() ? lastPill : null));
+  const [wasActive] = useState(() => (from && lastActive !== active ? lastActive : undefined));
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    const pill = pillRef.current;
+    if (!nav || !pill) return;
+
+    const at = (box: PillBox) => ({ transform: `translate(${box.x}px, ${box.y}px)`, width: `${box.w}px` });
+
+    const put = (box: PillBox) => {
+      pill.getAnimations().forEach((a) => a.cancel());
+      Object.assign(pill.style, at(box), { height: `${box.h}px`, opacity: "1" });
+    };
+
+    // The slide: the pill's front edge stretches out to the new link, so for
+    // a moment it spans both, then its back edge catches up.
+    const slide = (a: PillBox, b: PillBox) => {
+      const css = getComputedStyle(document.documentElement);
+      // The build may rewrite "850ms" as ".85s", so read either unit.
+      const raw = css.getPropertyValue("--mkt-slide-duration").trim();
+      const duration = parseFloat(raw) * (raw.endsWith("ms") ? 1 : raw.endsWith("s") ? 1000 : 1) || 850;
+      const easing = css.getPropertyValue("--mkt-slide-ease").trim() || "ease-in-out";
+      const left = Math.min(a.x, b.x);
+      const span = { x: left, y: b.y, w: Math.max(a.x + a.w, b.x + b.w) - left, h: b.h };
+      put(b);
+      pill.animate([at(a), { ...at(span), offset: 0.5 }, at(b)], { duration, easing });
+    };
+
+    const measure = (): PillBox | null => {
+      const link = nav.querySelector<HTMLElement>(".mkt-header-link.is-active");
+      if (!link) return null;
+      return { x: link.offsetLeft, y: link.offsetTop, w: link.offsetWidth, h: link.offsetHeight };
+    };
+
+    const place = () => {
+      const box = measure();
+      if (!box) {
+        pill.style.opacity = "0";
+        lastPill = null;
+        return;
+      }
+      put(box);
+      lastPill = box;
+    };
+
+    const target = measure();
+    if (from && target) {
+      slide(from, target); // from where the previous page left it, to this page's link
+      lastPill = target;
+    } else {
+      place();
+    }
+    lastActive = active;
+
+    // Re-place (without sliding) only if the links really change size, e.g.
+    // once the web font loads; other callbacks would cut the slide short.
+    let size = `${nav.offsetWidth}x${nav.offsetHeight}`;
+    const ro = new ResizeObserver(() => {
+      const next = `${nav.offsetWidth}x${nav.offsetHeight}`;
+      if (next === size) return;
+      size = next;
+      place();
+    });
+    ro.observe(nav);
+    return () => ro.disconnect();
+  }, [active, from]);
 
   const closePanel = () => setOpen(false);
 
@@ -55,12 +142,13 @@ export default function MarketingHeader({ active }: MarketingHeaderProps) {
           </svg>
         </Link>
 
-        <nav className="mkt-nav-links" aria-label="Main">
+        <nav ref={navRef} className={`mkt-nav-links${from ? " is-sliding" : ""}`} aria-label="Main">
+          <span ref={pillRef} className="mkt-nav-pill" aria-hidden="true" />
           {NAV_LINKS.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className={`mkt-header-link${active === link.to ? " is-active" : ""}`}
+              className={`mkt-header-link${active === link.to ? " is-active" : ""}${wasActive === link.to ? " was-active" : ""}`}
               aria-current={active === link.to ? "page" : undefined}
             >
               {link.label}

@@ -21,7 +21,7 @@ const IMG = {
 /* ── 1. HERO ─────────────────────────────────────────────── */
 export const HERO = {
   eyebrow: "Our products",
-  title: "Few products.",
+  title: "XVS.",
   titleAccent: "Built deep.",
   body:
     "Each CodeX product takes on a whole operating problem — not a feature of it — and owns the records that problem runs on.",

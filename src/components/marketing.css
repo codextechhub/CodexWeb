@@ -58,27 +58,93 @@ a:hover {
   justify-self: start;
 }
 .mkt-nav-links {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 .mkt-header-link {
+  position: relative;
+  z-index: 1;
   padding: 8px 14px;
   border-radius: 8px;
   font-size: 15px;
   font-weight: 500;
   color: #212121;
-  transition: color 180ms ease, background 180ms ease;
+  transition: color 180ms ease, background 180ms ease, transform 420ms var(--mkt-slide-ease);
 }
-.mkt-header-link:hover {
+.mkt-header-link:not(.is-active):hover {
   color: #4a659d;
   background: rgba(74, 101, 157, 0.06);
 }
-/* The page you're on. */
+/* The page you're on: blue, and bigger than the rest. */
 .mkt-header-link.is-active {
   color: #4a659d;
-  background: #e6ecf7;
   font-weight: 600;
+  transform: scale(var(--mkt-active-scale));
+}
+
+/* The light-blue pill behind the active link. JS sets its position and
+   size; on a page change it starts under the old link and slides over. */
+:root {
+  /* ✏️ Slide speed and feel, and how much bigger the active link is */
+  --mkt-slide-duration: 200ms;
+  --mkt-slide-ease: cubic-bezier(0.6, 0, 0.25, 1);
+  --mkt-active-scale: 1.14;
+}
+.mkt-nav-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: 8px;
+  background: #d9e3f5;
+  box-shadow: inset 0 0 0 1px rgba(74, 101, 157, 0.22), 0 4px 12px -4px rgba(74, 101, 157, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+/* On arrival from another page: the new link grows in as the pill lands,
+   and the link it left shrinks back to normal. */
+.mkt-nav-links.is-sliding .mkt-header-link.is-active {
+  animation: mkt-link-grow var(--mkt-slide-duration) var(--mkt-slide-ease) both;
+}
+.mkt-nav-links.is-sliding .mkt-header-link.was-active {
+  animation: mkt-link-shrink var(--mkt-slide-duration) var(--mkt-slide-ease) both;
+}
+@keyframes mkt-link-grow {
+  0%,
+  45% {
+    transform: scale(1);
+  }
+  82% {
+    transform: scale(calc(var(--mkt-active-scale) + 0.05)); /* small pop as the pill lands */
+  }
+  100% {
+    transform: scale(var(--mkt-active-scale));
+  }
+}
+@keyframes mkt-link-shrink {
+  from {
+    transform: scale(var(--mkt-active-scale));
+    color: #4a659d;
+  }
+  60%,
+  to {
+    transform: scale(1);
+  }
+}
+/* The mobile menu has no pill; the active link keeps its own background. */
+.mkt-nav-panel .mkt-header-link.is-active {
+  background: #d9e3f5;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mkt-nav-pill,
+  .mkt-header-link {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 .mkt-header-actions {
   justify-self: end;

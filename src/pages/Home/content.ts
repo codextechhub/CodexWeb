@@ -25,8 +25,8 @@ export const HERO = {
     "CodeX builds the data platforms and organizational systems that businesses and institutions run on: one source of truth, permissioned end to end, and designed around how the work actually happens.",
   primaryCta: { label: "Contact CodeX", href: "#contact" },
   secondaryCta: { label: "Meet XVS", href: "#xvs" },
-  image: IMAGES.schoolDashboard,
-  imageAlt: "XVS school dashboard showing term progress, students on roll and pending approvals",
+  image: IMAGES.financeDashboard,
+  imageAlt: "Finance overview dashboard showing cash position, receivables, payables, revenue against budget and collections over time",
   /** Small floating cards around the hero screenshot. */
   chips: [
     { label: "Records", value: "One source of truth" },

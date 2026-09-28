@@ -31,10 +31,10 @@ export default function Flagship() {
               <div>
                 <p className="flagship-name">
                   {FLAGSHIP.name}
-                  <span className="flagship-badge">
-                    <span className="pulse" aria-hidden="true" />
-                    {FLAGSHIP.badge}
-                  </span>
+                  {/* <span className="flagship-badge"> */}
+                    {/* <span className="pulse" aria-hidden="true" /> */}
+                    {/* {FLAGSHIP.badge} */}
+                  {/* </span> */}
                 </p>
                 <p className="flagship-fullname">{FLAGSHIP.fullName}</p>
               </div>
