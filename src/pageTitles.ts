@@ -15,13 +15,13 @@ import { useEffect } from "react";
  * ─────────────────────────────────────────────────────────────
  */
 export const PAGE_TITLES = {
-  home: "CodeX — Data solutions for organizations",
-  products: "Products — CodeX",
-  about: "About — CodeX",
-  contact: "Contact — CodeX",
-  blog: "Blog — CodeX",
-  xvs: "XVS — School management platform | CodeX",
-  notFound: "Page not found — CodeX",
+  home: "CX - Data solutions for organizations",
+  products: "Products - CodeX",
+  about: "About - CodeX",
+  contact: "Contact - CodeX",
+  blog: "Blog - CodeX",
+  xvs: "XVS - School management platform | CodeX",
+  notFound: "Page not found - CodeX",
 };
 
 /** Sets the browser tab name while the page is open. */
