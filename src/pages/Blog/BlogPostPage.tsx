@@ -18,7 +18,7 @@ import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 export default function BlogPostPage() {
   const { slug = "" } = useParams();
   const post = getPost(slug);
-  usePageTitle(post ? `${post.title} — CodeX` : PAGE_TITLES.notFound);
+  usePageTitle(post ? `${post.title} | CodeX` : PAGE_TITLES.notFound);
 
   if (!post) return <NotFoundPage />;
 

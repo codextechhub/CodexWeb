@@ -64,7 +64,7 @@ export default function NotFoundPage() {
           <h1 style={{ margin: 0, fontSize: "clamp(38px,6vw,72px)", lineHeight: 1.02, letterSpacing: "-.04em", fontWeight: 600 }}>This page is not in the register</h1>
 
           <p style={{ margin: 0, maxWidth: 480, fontSize: "clamp(16px,1.5vw,18.5px)", lineHeight: 1.62, color: "#555654" }}>
-            The link may be out of date, or the page may have moved. Nothing has been lost — try one of these instead.
+            The link may be out of date, or the page may have moved. Nothing has been lost. Please try one of these instead.
           </p>
 
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12, marginTop: 2 }}>

@@ -104,7 +104,7 @@ export default function BlogPage() {
                 ))}
               </div>
             ) : (
-              !showFeatured && <p className="blog-empty">No posts in this topic yet — check back soon.</p>
+              !showFeatured && <p className="blog-empty">No articles in this topic yet. Please check back soon.</p>
             )}
           </div>
         </section>

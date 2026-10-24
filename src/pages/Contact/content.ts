@@ -10,9 +10,9 @@
 /* ── 1. HERO ─────────────────────────────────────────────── */
 export const HERO = {
   eyebrow: "Contact",
-  title: "Tell us what your records are doing to you.",
+  title: "Tell us about your records challenge.",
   body:
-    "Whether you want a walkthrough of XVS or you're weighing up whether a platform is the answer at all, start here. We read every message ourselves.",
+    "Whether you would like a walkthrough of XVS or want to assess whether a platform is the right solution, start here. Every message is read by a member of our team.",
 };
 
 /* ── 2. CONTACT DETAILS (cards under the hero) ───────────── */
@@ -46,7 +46,7 @@ export const FORM = {
   privacyNote: "We use these details only to reply to you.",
   success: {
     title: "Message sent",
-    body: "Thanks for reaching out — we reply within one business day. Keep an eye on your inbox (and spam folder, just in case).",
+    body: "Thank you for contacting us. We will reply within one business day. Please check your inbox, including your spam folder.",
     again: "Send another message",
   },
 };
@@ -55,24 +55,24 @@ export const FORM = {
 export const NEXT_STEPS = {
   title: "What happens next",
   steps: [
-    { title: "We read it", body: "A real person on the team reads your message — no bots, no sales script." },
-    { title: "We reply within a day", body: "With answers, or a few times that suit you for a call." },
-    { title: "A 40-minute walkthrough", body: "XVS on your own structure, ending with a straight answer on fit." },
+    { title: "We read it", body: "A member of our team reads your message personally." },
+    { title: "We reply within a day", body: "With answers, or proposed times for a call." },
+    { title: "A 40-minute walkthrough", body: "XVS shown against your own structure, ending with a clear assessment of fit." },
   ],
 };
 
 /* ── 5. FAQ ──────────────────────────────────────────────── */
 // ✏️ Add, remove or reword questions freely.
 export const FAQ = {
-  title: "Questions we hear a lot",
+  title: "Frequently asked questions",
   items: [
     {
       q: "How long does a demo take?",
-      a: "About forty minutes. We walk through XVS on real workflows — ideally your own branch list and a sample register — and end with a straight answer on whether it's a fit.",
+      a: "About forty minutes. We walk through XVS using real workflows, ideally your own branch list and a sample register, and conclude with a clear assessment of fit.",
     },
     {
       q: "Can you move our existing records across?",
-      a: "Yes. Your existing records go in first, validated row by row, so you can see what's wrong with the data you already have before anything goes live.",
+      a: "Yes. Your existing records go in first, validated row by row, so any issues in your existing data are identified before anything goes live.",
     },
     {
       q: "Is XVS only for large school groups?",

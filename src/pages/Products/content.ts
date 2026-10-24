@@ -24,7 +24,7 @@ export const HERO = {
   title: "XVS.",
   titleAccent: "Built deep.",
   body:
-    "Each CodeX product takes on a whole operating problem — not a feature of it — and owns the records that problem runs on.",
+    "Each CodeX product takes on a whole operating problem rather than a single feature of it, and owns the records that problem runs on.",
   // ✏️ Update these counts as products ship.
   status: [
     { label: "live in production", count: 1, live: true },
@@ -39,7 +39,7 @@ export const FLAGSHIP = {
   badge: "Live",
   title: "The complete operating system for schools",
   body:
-    "Institutions, branches, staff, students, fees, procurement and timetables in one governed platform. Built for schools that outgrew spreadsheets and never want to reconcile two registers again.",
+    "Institutions, branches, staff, students, fees, procurement and timetables in one governed platform. Built for schools that have outgrown spreadsheets and need a single, reliable register.",
   tags: ["Multi-branch", "Finance & fees", "Procurement", "Approvals", "Audit trail"],
   primaryCta: "Visit XVS", // opens XVS_URL (src/xvsLink.ts) in a new tab
   secondaryCta: { label: "Book a demo", to: "/contact#form" },
@@ -68,7 +68,7 @@ export const AREAS = {
     {
       icon: "school",
       title: "Run the school",
-      body: "Branches, students, staff, classes and the timetable — the day-to-day structure of every campus.",
+      body: "Branches, students, staff, classes and the timetable: the day-to-day structure of every campus.",
       modules: ["Schools & branches", "Students", "Staff", "Organogram", "Academic structure", "Timetable & calendar"],
       image: IMG.schoolDashboard,
     },
@@ -82,14 +82,14 @@ export const AREAS = {
     {
       icon: "cart",
       title: "Buying & stock",
-      body: "From requisition to purchase order to goods received — with stock tracked throughout.",
+      body: "From requisition to purchase order to goods received, with stock tracked throughout.",
       modules: ["Vendors", "Requisitions", "Purchase orders", "Inventory"],
       image: IMG.procurement,
     },
     {
       icon: "users",
       title: "Families",
-      body: "Parents pay invoices from their inbox and hear about what matters, when it matters.",
+      body: "Parents receive invoices and pay online, and are notified of important updates as they happen.",
       modules: ["Parent portal", "Notifications"],
       image: IMG.notifications,
     },
@@ -108,7 +108,7 @@ export const FOUNDATION = {
   title: "Underneath every module",
   items: [
     { icon: "lock", title: "Secure sign-in", body: "Authentication and session control for every user." },
-    { icon: "shield", title: "Permissioned to the action", body: "Access by what someone may do, not their job title." },
+    { icon: "shield", title: "Permissioned to the action", body: "Access is granted by permitted action, not by job title." },
     { icon: "check", title: "Approvals on record", body: "Spending and changes routed to the right person." },
     { icon: "clock", title: "Full audit trail", body: "Who did what, when, and under whose authority." },
   ],
@@ -119,7 +119,7 @@ export const FOUNDATION = {
 export const ROADMAP = {
   label: "What's next",
   title: "In development",
-  note: "Named when they ship, not before.",
+  note: "Products are named at launch.",
   // ✏️ Rename these once the products are announced.
   items: [
     {
@@ -134,16 +134,16 @@ export const ROADMAP = {
     },
   ],
   invite: {
-    title: "Have a problem that belongs here?",
-    body: "If your organization is carrying a records problem nobody has solved, tell us about it.",
-    cta: { label: "Tell us", to: "/contact#form" },
+    title: "Have a requirement we should know about?",
+    body: "If your organization has a records problem that remains unsolved, we would like to hear about it.",
+    cta: { label: "Contact us", to: "/contact#form" },
   },
 };
 
 /* ── 6. CLOSING CTA ──────────────────────────────────────── */
 export const CTA = {
   title: "See XVS on your own structure",
-  body: "Bring your branch list and a sample register. Forty minutes on real workflows, ending with a straight answer on fit.",
+  body: "Bring your branch list and a sample register. A forty-minute review of real workflows, ending with a clear assessment of fit.",
   primary: { label: "Book a demo", to: "/contact#form" },
   image: IMG.classTimetable,
 };

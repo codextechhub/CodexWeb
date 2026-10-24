@@ -45,7 +45,7 @@ export default function Story() {
             <path d="M0 34V20C0 8.7 5.6 2 16.9 0l2 4.6C12.6 6.4 9.6 10 9.3 15.4H18V34H0Zm25 0V20C25 8.7 30.6 2 41.9 0l2 4.6c-6.3 1.8-9.3 5.4-9.6 10.8H43V34H25Z" />
           </svg>
           <blockquote>{QUOTE.text}</blockquote>
-          <p className="about-quote-by">— {QUOTE.by}</p>
+          <p className="about-quote-by">{QUOTE.by}</p>
         </Reveal>
       </div>
     </section>

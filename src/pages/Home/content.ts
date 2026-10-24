@@ -58,7 +58,7 @@ export const PROBLEM = {
   pains: [
     {
       title: "Records that disagree",
-      body: "Finance has one number, operations has another, and they never match — so every report starts with a reconciliation.",
+      body: "Finance has one number, operations has another, and they rarely match, so every report begins with a reconciliation.",
     },
     {
       title: "Approvals in the chat",
@@ -106,7 +106,7 @@ export const DISCIPLINES = {
 export const XVS = {
   chapter: "03",
   label: "Flagship product",
-  title: "XVS — the operating system for schools",
+  title: "XVS: the operating system for schools",
   intro:
     "Institutions, branches, people, fees, timetables and records in one governed platform, from a single campus to a group of twenty.",
   cta: "Explore XVS",
@@ -116,7 +116,7 @@ export const XVS = {
       id: "run",
       tab: "Run the school",
       title: "Every branch, at a glance",
-      body: "Students on roll, staff, classes and the work waiting for a decision — the morning briefing a proprietor actually needs.",
+      body: "Students on roll, staff, classes and the work waiting for a decision, presented as the daily briefing a proprietor needs.",
       image: IMAGES.schoolDashboard,
       alt: "XVS school dashboard",
     },
@@ -124,7 +124,7 @@ export const XVS = {
       id: "people",
       tab: "Know every student",
       title: "One complete profile per learner",
-      body: "Admission, class history, guardians, medical notes and documents — with XVS telling you exactly what is still missing.",
+      body: "Admission, class history, guardians, medical notes and documents, with XVS flagging any information still outstanding.",
       image: IMAGES.studentProfile,
       alt: "XVS student profile",
     },
@@ -147,7 +147,7 @@ export const XVS = {
     {
       id: "approve",
       tab: "Approve spending",
-      title: "Every naira, signed off",
+      title: "Every naira approved and recorded",
       body: "Requisitions, expense claims and refunds route to the right approver. Nothing moves without a recorded yes.",
       image: IMAGES.approvalInbox,
       alt: "XVS approval inbox",
@@ -155,8 +155,8 @@ export const XVS = {
     {
       id: "audit",
       tab: "Prove it",
-      title: "An audit trail that answers back",
-      body: "Every finance mutation is recorded immutably — who did it, when, and to which record. Ready for the board or the regulator.",
+      title: "A complete audit trail",
+      body: "Every financial change is permanently recorded: who made it, when, and to which record. Ready for review by the board or the regulator.",
       image: IMAGES.auditTrail,
       alt: "XVS finance audit trail",
     },
@@ -167,14 +167,14 @@ export const XVS = {
 export const DAY = {
   chapter: "04",
   label: "A day on XVS",
-  title: "What one source of truth feels like",
-  intro: "Follow a single school day. Every step writes to the same record, so nobody re-types anything.",
+  title: "One source of truth in daily operation",
+  intro: "A single school day, step by step. Every action updates the same record, so no information is entered twice.",
   moments: [
     { time: "07:45", who: "Registrar", what: "Enrols two new students. Their class, guardians and fees are set in one step." },
     { time: "08:30", who: "Class teachers", what: "Attendance is marked across every branch before first period ends." },
     { time: "11:00", who: "Bursar", what: "Parent payments reconcile against invoices automatically. Receipts go out by email." },
     { time: "14:15", who: "Branch head", what: "Approves a science-lab requisition. The decision and its reason are logged." },
-    { time: "17:00", who: "Proprietor", what: "Opens one dashboard and sees the whole group — fees, people and pending decisions." },
+    { time: "17:00", who: "Proprietor", what: "Opens one dashboard and sees the whole group: fees, people and pending decisions." },
   ],
 };
 
@@ -211,9 +211,9 @@ export const STATS = [
 /* ── 8. CONTACT ──────────────────────────────────────────── */
 export const CONTACT = {
   label: "Contact CodeX",
-  title: "Let's talk about what you need.",
+  title: "Tell us what you need.",
   body:
-    "A new project, a partnership, support, or just a question about how we work — send us a note and the CodeX team will get back to you.",
+    "For a new project, a partnership, support or any question about how we work, send us a message and the CodeX team will respond.",
   bullets: [
     "New projects and custom systems",
     "Partnerships and collaborations",
@@ -222,5 +222,5 @@ export const CONTACT = {
   messageLabel: "How can we help?",
   messagePlaceholder: "Tell us a little about what you need…",
   submitLabel: "Send message",
-  successMessage: "Message sent. Thanks — we reply within one business day.",
+  successMessage: "Message sent. Thank you. We will respond within one business day.",
 };

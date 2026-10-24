@@ -44,11 +44,11 @@ export const MISSION = {
   // ✏️ Your mission and vision statements.
   mission: {
     label: "Our mission",
-    text: "Give every institution one record it can trust — permissioned, auditable, and built around how the work actually happens.",
+    text: "Give every institution one record it can trust: permissioned, auditable, and built around how the work is actually done.",
   },
   vision: {
     label: "Our vision",
-    text: "Institutions that run on systems, not spreadsheets — where any figure can be traced back to the record it came from.",
+    text: "Institutions that run on systems, not spreadsheets, where any figure can be traced back to the record it came from.",
   },
 };
 
@@ -57,7 +57,7 @@ export const STORY = {
   chapter: "01",
   label: "Our story",
   title: "How we got here",
-  intro: "Nobody sets out to run an organization on scattered spreadsheets. It accumulates. This is the problem we kept finding, and what we decided to do about it.",
+  intro: "No organization plans to run on scattered spreadsheets. It happens gradually. This is the problem we repeatedly encountered, and how we chose to address it.",
   /**
    * ✏️ Each step of the story. `year` is optional — add real dates
    * (e.g. year: "2023") and they will appear as a badge on the step.
@@ -66,12 +66,12 @@ export const STORY = {
     {
       year: "",
       title: "The problem we kept finding",
-      body: "An organization grows, and its records grow with it — into a finance spreadsheet, a shared drive, a register in a drawer, and three tools that were never designed to agree.",
+      body: "An organization grows, and its records multiply with it: a finance spreadsheet, a shared drive, a paper register, and several tools that were never designed to work together.",
     },
     {
       year: "",
       title: "The cost shows up later",
-      body: "A figure that can't be reconciled before a board meeting. A permission nobody can explain. A term of data that took two weeks to assemble by hand. That is not a reporting problem — it's a system problem.",
+      body: "A figure that can't be reconciled before a board meeting. A permission nobody can explain. A term's data that took two weeks to assemble by hand. These are not reporting problems. They are system problems.",
     },
     {
       year: "",
@@ -86,7 +86,7 @@ export const STORY = {
     {
       year: "",
       title: "What comes next",
-      body: "The same approach, applied to the next institution that is carrying a records problem it has stopped expecting anyone to fix.",
+      body: "The same approach, applied to the next institution with an unresolved records problem.",
     },
   ],
 };
@@ -94,7 +94,7 @@ export const STORY = {
 /* ── 4. MANIFESTO QUOTE ──────────────────────────────────── */
 export const QUOTE = {
   // ✏️ Swap `by` for a founder's name and role if you'd like it attributed.
-  text: "Most organizations don't have a data problem. They have a system problem — and that's the one we work on.",
+  text: "Most organizations don't have a data problem. They have a system problem, and that is the problem we work on.",
   by: "The CodeX team",
 };
 
@@ -104,8 +104,8 @@ export const ENGAGE = {
   label: "How we engage",
   title: "Four things we do on every engagement",
   steps: [
-    { title: "Start with the operator", body: "We sit with the registrar, the bursar, the branch head. The exceptions they handle every day are what software usually gets wrong — and where we start." },
-    { title: "Model the structure honestly", body: "Branches, roles and approvals go into the model as they actually are, not flattened to fit a schema that was convenient to build." },
+    { title: "Start with the operator", body: "We sit with the registrar, the bursar, the branch head. The exceptions they handle every day are what software most often gets wrong, so that is where we begin." },
+    { title: "Model the structure accurately", body: "Branches, roles and approvals are modelled as they actually exist, not simplified to fit a convenient schema." },
     { title: "Migrate before you commit", body: "Your existing records go in first, validated row by row, so you see what's wrong with the data you already have before anything goes live." },
     { title: "Stay after launch", body: "What we ship stays maintained, documented and versioned. Nothing goes live that we couldn't support in three years." },
   ],
@@ -115,13 +115,13 @@ export const ENGAGE = {
 export const VALUES = {
   chapter: "03",
   label: "What we hold to",
-  title: "Governance is not a feature we added",
-  intro: "It's the foundation everything else sits on. Three rules shape every product we ship.",
+  title: "Governance is built in from the start",
+  intro: "It is the foundation for everything else. Three rules shape every product we deliver.",
   /** `icon` must be one of: shield, clock, source (see sections/Values.tsx). */
   items: [
     { icon: "shield", title: "Permissioned to the action", body: "Access is granted by what someone may do, not by the title on their contract. Every check is enforced server-side." },
-    { icon: "clock", title: "Answerable after the fact", body: "Who changed what, when, and under whose authority — recorded for every action, and exportable when someone asks." },
-    { icon: "source", title: "One number, one source", body: "A figure on a report traces back to the record it came from. No parallel version assembled for the meeting." },
+    { icon: "clock", title: "Answerable after the fact", body: "Who changed what, when, and under whose authority is recorded for every action and available for export on request." },
+    { icon: "source", title: "One number, one source", body: "A figure on a report traces back to the record it came from. No separate version is prepared for the meeting." },
   ],
 } as const;
 
@@ -130,7 +130,7 @@ export const TEAM = {
   chapter: "04",
   label: "The team",
   title: "The people behind the platform",
-  intro: "A small team based in Lagos, organised around the work — not around departments.",
+  intro: "A small team based in Lagos, organized around the work rather than around departments.",
   /**
    * ✏️ FOUNDERS / LEADERSHIP — empty for now, so the block is hidden.
    * Add people and it appears automatically above the team cards:
@@ -141,17 +141,17 @@ export const TEAM = {
   people: [] as { name: string; role: string; photo?: string; linkedin?: string }[],
   /** The functional teams. `icon` must be one of: code, design, rocket, support. */
   groups: [
-    { icon: "code", title: "Engineering", body: "Builds and runs the platform — data model, permissions, integrations and everything that keeps records consistent." },
-    { icon: "design", title: "Product & design", body: "Spends time in schools and offices, turning how the work really happens into screens people don't need training for." },
+    { icon: "code", title: "Engineering", body: "Builds and operates the platform, including the data model, permissions, integrations and the controls that keep records consistent." },
+    { icon: "design", title: "Product & design", body: "Works on site with schools and offices to turn real workflows into interfaces that need little training." },
     { icon: "rocket", title: "Implementation", body: "Moves your existing records in, sets up your structure, and gets every branch live." },
-    { icon: "support", title: "Support", body: "Answers within one business day and stays with you long after launch." },
+    { icon: "support", title: "Support", body: "Responds within one business day and supports you well beyond launch." },
   ],
 } as const;
 
 /* ── 8. INSIDE THE WORK (screenshot strip) ───────────────── */
 export const GALLERY = {
   title: "Inside the work",
-  body: "A look at what we've built so far. Every screen writes to the same record.",
+  body: "A selection of what we have built so far. Every screen reads from and writes to the same record.",
   images: [
     { src: IMG.schoolDashboard, caption: "School dashboard" },
     { src: IMG.studentProfile, caption: "Student profile" },
@@ -165,7 +165,7 @@ export const GALLERY = {
 /* ── 9. CLOSING CALL TO ACTION ───────────────────────────── */
 export const CTA = {
   title: "Based in Lagos, working with institutions anywhere",
-  body: "If you're carrying a records problem you've stopped expecting anyone to fix, we'd like to hear about it.",
+  body: "If your organization has a records problem that has gone unresolved, we would welcome the conversation.",
   primary: { label: "Get in touch", to: "/contact#form" }, // "#form" = land on the form
   secondary: { label: "See XVS" }, // links to XVS_URL (src/xvsLink.ts)
 };
