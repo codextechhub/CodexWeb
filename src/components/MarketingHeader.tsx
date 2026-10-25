@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import type React from "react";
 import { Link } from "react-router-dom";
 import { useScrolled } from "../hooks/useScrolled";
 import { XVS_CONTACT_URL } from "../xvsLink";
@@ -119,8 +120,28 @@ export default function MarketingHeader({ active }: MarketingHeaderProps) {
 
   const closePanel = () => setOpen(false);
 
+  // While the mobile menu is open: freeze the page behind it, close on Escape,
+  // and close if the window widens past the mobile breakpoint.
+  useEffect(() => {
+    if (!open) return;
+    const root = document.documentElement;
+    const prevOverflow = root.style.overflow;
+    root.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const wide = window.matchMedia("(min-width: 860px)");
+    const onWide = () => wide.matches && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    wide.addEventListener("change", onWide);
+    return () => {
+      root.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+      wide.removeEventListener("change", onWide);
+    };
+  }, [open]);
+
   return (
-    <header className="mkt-header">
+    <header className={`mkt-header${open ? " is-menu-open" : ""}`}>
+      <div className="mkt-nav-backdrop" aria-hidden="true" onClick={closePanel} />
       <div className={`mkt-header-bar${scrolled ? " is-scrolled" : ""}`}>
         <Link to="/" className="mkt-header-logo" aria-label="Home" onClick={closePanel}>
           <svg
@@ -169,39 +190,57 @@ export default function MarketingHeader({ active }: MarketingHeaderProps) {
           <button
             type="button"
             className="mkt-nav-toggle"
-            aria-label="Menu"
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mkt-mobile-menu"
             onClick={() => setOpen((v) => !v)}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-              {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
-            </svg>
+            <span className="mkt-burger" aria-hidden="true">
+              <span />
+              <span />
+            </span>
           </button>
         </div>
 
-        <div className={`mkt-nav-panel${open ? " is-open" : ""}`}>
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
+        <div
+          id="mkt-mobile-menu"
+          className={`mkt-nav-panel${open ? " is-open" : ""}`}
+          aria-hidden={!open}
+          inert={!open}
+        >
+          <p className="mkt-mnav-eyebrow">Menu</p>
+          <nav className="mkt-mnav-list" aria-label="Mobile">
+            {NAV_LINKS.map((link, i) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={closePanel}
+                className={`mkt-mnav-link${active === link.to ? " is-active" : ""}`}
+                aria-current={active === link.to ? "page" : undefined}
+                style={{ "--i": i } as React.CSSProperties}
+              >
+                <span className="mkt-mnav-num">{String(i + 1).padStart(2, "0")}</span>
+                <span className="mkt-mnav-label">{link.label}</span>
+                <svg className="mkt-mnav-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </Link>
+            ))}
+          </nav>
+          <div className="mkt-mnav-foot" style={{ "--i": NAV_LINKS.length } as React.CSSProperties}>
+            <a
+              href={XVS_CONTACT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={closePanel}
-              className={`mkt-header-link${active === link.to ? " is-active" : ""}`}
-              aria-current={active === link.to ? "page" : undefined}
-              style={{ padding: "12px 14px", fontSize: 16 }}
+              className="mkt-header-cta mkt-mnav-cta"
             >
-              {link.label}
-            </Link>
-          ))}
-          <a
-            href={XVS_CONTACT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={closePanel}
-            className="mkt-header-cta"
-            style={{ marginTop: 8, justifyContent: "center", minHeight: 48, fontSize: 16 }}
-          >
-            {DEMO_LABEL}
-          </a>
+              {DEMO_LABEL}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </header>
