@@ -33,7 +33,7 @@ export const DETAILS = [
  */
 export const REASONS = [
   { value: "Demo", label: "Book a demo", hint: "See XVS on your own workflows", icon: "calendar", prompt: "What you use today, and what isn't working" },
-  { value: "Question", label: "General question", hint: "Anything about CodeX or XVS", icon: "chat", prompt: "What would you like to know?" },
+  { value: "Question", label: "General question", hint: "Anything about Code X or XVS", icon: "chat", prompt: "What would you like to know?" },
   { value: "Partnership", label: "Partnership", hint: "Resellers, integrators, investors", icon: "handshake", prompt: "What you have in mind, and who you are" },
 ] as const;
 

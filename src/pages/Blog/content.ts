@@ -51,7 +51,7 @@ export interface Post {
 
 /* ── Page text ───────────────────────────────────────────── */
 export const BLOG_HERO = {
-  eyebrow: "The CodeX blog",
+  eyebrow: "The Code X blog",
   title: "Notes on data,",
   titleAccent: "systems and trust.",
   body:
@@ -61,7 +61,7 @@ export const BLOG_HERO = {
 export const BLOG_CTA = {
   title: "Have a data topic you would like us to cover?",
   body: "Tell us what is slowing your organization down. The most relevant questions become articles and conversations.",
-  label: "Contact CodeX",
+  label: "Contact Code X",
   href: "/contact#form",
 };
 
@@ -75,7 +75,7 @@ export const POSTS: Post[] = [
     category: "Perspective",
     date: "2026-09-18",
     readMinutes: 6,
-    author: "CodeX Team",
+    author: "Code X Team",
     cover: { kind: "pattern", icon: "database", tone: "blue" },
     featured: true,
     body: [
@@ -90,7 +90,7 @@ export const POSTS: Post[] = [
         "Permissions reflect how the organization is actually structured, including branches, roles and reporting lines.",
         "Every change carries a name and a timestamp, so questions can be answered with evidence.",
       ] },
-      { type: "p", text: "That is the work CodeX does. We do not sell tools that sit beside your spreadsheets. We replace the spreadsheets with a system everyone in the organization can trust." },
+      { type: "p", text: "That is the work Code X does. We do not sell tools that sit beside your spreadsheets. We replace the spreadsheets with a system everyone in the organization can trust." },
     ],
   },
   {
@@ -101,7 +101,7 @@ export const POSTS: Post[] = [
     category: "Governance",
     date: "2026-09-04",
     readMinutes: 5,
-    author: "CodeX Team",
+    author: "Code X Team",
     cover: { kind: "image", src: "/images/xvs/audit-trail.jpg", alt: "An audit trail listing who changed which record and when" },
     body: [
       { type: "p", text: "Boards, investors and regulators ask the same question in different words: how do you know this number is right? For most organizations the honest answer is \"because someone checked it\", which holds only as long as that person is available." },
@@ -124,7 +124,7 @@ export const POSTS: Post[] = [
     category: "Operations",
     date: "2026-08-21",
     readMinutes: 4,
-    author: "CodeX Team",
+    author: "Code X Team",
     cover: { kind: "image", src: "/images/xvs/approval-inbox.jpg", alt: "An approval inbox with requests waiting for a decision" },
     body: [
       { type: "p", text: "In many organizations the approval process is a message: a photo of an invoice, a voice note saying \"go ahead\", a thumbs-up in a group chat. It is quick and it works, until someone needs to know what was approved, by whom, and against which budget." },
@@ -146,7 +146,7 @@ export const POSTS: Post[] = [
     category: "Data platforms",
     date: "2026-08-07",
     readMinutes: 7,
-    author: "CodeX Team",
+    author: "Code X Team",
     cover: { kind: "pattern", icon: "org", tone: "night" },
     body: [
       { type: "p", text: "Growth is where informal systems fail first. One location can run on a well-kept spreadsheet. Two locations run on two spreadsheets and a monthly phone call. By the fifth, nobody can say with confidence what the whole organization looks like today." },
@@ -167,10 +167,10 @@ export const POSTS: Post[] = [
     category: "Product",
     date: "2026-07-24",
     readMinutes: 5,
-    author: "CodeX Team",
+    author: "Code X Team",
     cover: { kind: "image", src: "/images/xvs/school-dashboard.jpg", alt: "The XVS school dashboard" },
     body: [
-      { type: "p", text: "XVS is CodeX's flagship product: one governed platform for institutions, branches, people, fees, timetables and records, from a single campus to a group of twenty." },
+      { type: "p", text: "XVS is Code X's flagship product: one governed platform for institutions, branches, people, fees, timetables and records, from a single campus to a group of twenty." },
       { type: "h2", text: "Why schools first" },
       { type: "p", text: "Schools bring together every problem we work on. Admissions, finance, timetabling, procurement and parent communication all touch the same records, often across several branches, and every one of them has an approval step that matters." },
       { type: "list", items: [
@@ -190,7 +190,7 @@ export const POSTS: Post[] = [
     category: "Engineering",
     date: "2026-07-10",
     readMinutes: 6,
-    author: "CodeX Team",
+    author: "Code X Team",
     cover: { kind: "pattern", icon: "flow", tone: "soft" },
     body: [
       { type: "p", text: "The spreadsheets an organization wants to leave are also the ones it depends on every day. A migration plan that asks everyone to stop working for a week is a plan that does not get carried out." },

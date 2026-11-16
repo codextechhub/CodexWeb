@@ -25,7 +25,7 @@ const FIELDS: { name: Field; label: string; type?: string; placeholder: string; 
 
 type Status = { kind: "idle" | "sending" | "sent" | "error"; message: string };
 
-/** Closing chapter — a general "Contact CodeX" form (sends through EmailJS). */
+/** Closing chapter — a general "Contact Code X" form (sends through EmailJS). */
 export default function ContactSection() {
   const [values, setValues] = useState<Values>(EMPTY);
   const [touched, setTouched] = useState<Partial<Record<Field, boolean>>>({});

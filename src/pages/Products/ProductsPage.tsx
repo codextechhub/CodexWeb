@@ -11,7 +11,7 @@ import "../../components/shared/shared.css";
 import "./products.css";
 
 /**
- * The CodeX Products page, top to bottom:
+ * The Code X Products page, top to bottom:
  *
  *   Hero        – "Few products. Built deep." + live / in-development counts
  *   Flagship    – the XVS showcase card (dark, with screenshots)

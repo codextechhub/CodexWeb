@@ -5,7 +5,7 @@ import "./notFound.css";
 import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 
 const LINKS = [
-  { to: "/products", title: "Products", desc: "The CodeX portfolio" },
+  { to: "/products", title: "Products", desc: "The Code X portfolio" },
   // XVS lives on its own domain — links there, not to an internal route
   { href: XVS_URL, title: "XVS", desc: "School management platform" },
   { to: "/about", title: "About", desc: "How we work" },
@@ -136,7 +136,7 @@ export default function NotFoundPage() {
 
       <footer style={{ flex: "none", background: "#fff", borderTop: "1px solid #EDEFF4", padding: 24 }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "space-between", alignItems: "center" }}>
-          <p style={{ margin: 0, fontSize: 13.5, color: "#8F918F" }}>© 2026 CodeX Technologies</p>
+          <p style={{ margin: 0, fontSize: 13.5, color: "#8F918F" }}>© 2026 Code X Technologies</p>
           <p style={{ margin: 0, fontSize: 13.5, color: "#8F918F" }}>Lagos, Nigeria</p>
         </div>
       </footer>

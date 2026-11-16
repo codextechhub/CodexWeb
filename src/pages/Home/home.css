@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   CodeX home page styles
+   Code X home page styles
    Everything is scoped under `.home` so it never leaks into
    other pages. Colours, buttons, headings and the reveal
    animation come from src/components/shared/shared.css.

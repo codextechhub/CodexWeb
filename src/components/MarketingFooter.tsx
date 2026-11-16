@@ -83,7 +83,7 @@ export default function MarketingFooter({ page }: MarketingFooterProps) {
         </div>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "space-between", alignItems: "center", paddingTop: 24, borderTop: "1px solid #F1F2F5" }}>
-          <p style={{ margin: 0, fontSize: 13.5, color: muted }}>© 2026 CodeX Technologies</p>
+          <p style={{ margin: 0, fontSize: 13.5, color: muted }}>© 2026 Code X Technologies</p>
           <p style={{ margin: 0, fontSize: 13.5, color: muted }}>Lagos, Nigeria</p>
         </div>
       </div>

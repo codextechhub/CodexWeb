@@ -16,7 +16,7 @@ export const EMAIL_ERROR = "We couldn't send your message. Please try again, or 
  * EmailJS dashboard > Email Templates > your template:
  *   To Email: sales@codex.com (fixed in the dashboard)
  *   Reply To: {{email}}
- *   Subject: CodeX enquiry: {{reason}} from {{name}}
+ *   Subject: Code X enquiry: {{reason}} from {{name}}
  * Paste docs/emailjs-template.html into the template's HTML code editor.
  * Copy the service ID, template ID and PUBLIC key into .env.local;
  * .env.example explains where to find each value. Restart Vite afterwards.

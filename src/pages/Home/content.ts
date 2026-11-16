@@ -19,11 +19,11 @@ export const IMAGES = {
 
 /* ── 1. HERO ─────────────────────────────────────────────── */
 export const HERO = {
-  eyebrow: "CodeX Technologies · Lagos, Nigeria",
+  eyebrow: "Code X Technologies · Lagos, Nigeria",
   titleLines: ["Organizations run on data.", "We make it agree."],
   body:
-    "CodeX builds the data platforms and organizational systems that businesses and institutions run on: one source of truth, permissioned end to end, and designed around how the work actually happens.",
-  primaryCta: { label: "Contact CodeX", href: "#contact" },
+    "Code X builds the data platforms and organizational systems that businesses and institutions run on: one source of truth, permissioned end to end, and designed around how the work actually happens.",
+  primaryCta: { label: "Contact Code X", href: "#contact" },
   secondaryCta: { label: "Meet XVS", href: "#xvs" },
   image: IMAGES.financeDashboard,
   imageAlt: "Finance overview dashboard showing cash position, receivables, payables, revenue against budget and collections over time",
@@ -35,7 +35,7 @@ export const HERO = {
   ],
 };
 
-/** The scrolling band under the hero: who CodeX builds for. */
+/** The scrolling band under the hero: who Code X builds for. */
 export const AUDIENCE = [
   "Founders & owners",
   "Executives",
@@ -210,10 +210,10 @@ export const STATS = [
 
 /* ── 8. CONTACT ──────────────────────────────────────────── */
 export const CONTACT = {
-  label: "Contact CodeX",
+  label: "Contact Code X",
   title: "Tell us what you need.",
   body:
-    "For a new project, a partnership, support or any question about how we work, send us a message and the CodeX team will respond.",
+    "For a new project, a partnership, support or any question about how we work, send us a message and the Code X team will respond.",
   bullets: [
     "New projects and custom systems",
     "Partnerships and collaborations",

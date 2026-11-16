@@ -1,7 +1,7 @@
 import { PRINCIPLES, STATS } from "../content";
 import { CountUp, Reveal, SectionHeading } from "../../../components/shared/ui";
 
-/** Chapter 05 — how CodeX works, followed by the platform numbers. */
+/** Chapter 05 — how Code X works, followed by the platform numbers. */
 export default function Principles() {
   return (
     <section className="section principles">

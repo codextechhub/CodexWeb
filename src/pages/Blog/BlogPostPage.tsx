@@ -18,7 +18,7 @@ import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 export default function BlogPostPage() {
   const { slug = "" } = useParams();
   const post = getPost(slug);
-  usePageTitle(post ? `${post.title} | CodeX` : PAGE_TITLES.notFound);
+  usePageTitle(post ? `${post.title} | Code X` : PAGE_TITLES.notFound);
 
   if (!post) return <NotFoundPage />;
 
@@ -61,7 +61,7 @@ export default function BlogPostPage() {
               </span>
               <span>
                 <strong>{post.author}</strong>
-                <span className="article-byline-sub">CodeX Technologies</span>
+                <span className="article-byline-sub">Code X Technologies</span>
               </span>
               <CopyLinkButton />
             </div>

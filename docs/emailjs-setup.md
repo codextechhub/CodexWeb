@@ -11,8 +11,8 @@ Both the homepage demo form and the contact form use the same EmailJS template t
 | Dashboard field | Value to enter |
 | --- | --- |
 | To Email | `sales@codex.com` |
-| Subject | `CodeX enquiry: {{reason}} from {{name}}` |
-| From Name | `CodeX Website` |
+| Subject | `Code X enquiry: {{reason}} from {{name}}` |
+| From Name | `Code X Website` |
 | From Email | Use the default email address of your connected Gmail service |
 | Reply To | `{{email}}` |
 | CC / BCC | Leave empty unless you want additional recipients |

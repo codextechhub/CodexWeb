@@ -12,15 +12,15 @@ import "./home.css";
 import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 
 /**
- * The CodeX home page, told as a story in chapters:
+ * The Code X home page, told as a story in chapters:
  *
  *   Hero          – who we are, with the XVS dashboard
  *   Problem       – 01 · the system problem institutions live with
- *   Disciplines   – 02 · what CodeX builds
+ *   Disciplines   – 02 · what Code X builds
  *   XvsShowcase   – 03 · the flagship product, feature by feature
  *   DayTimeline   – 04 · a school day on XVS
  *   Principles    – 05 · how we work + platform numbers
- *   ContactSection – "Contact CodeX" form, the call to action
+ *   ContactSection – "Contact Code X" form, the call to action
  *
  * To change any text or image, edit ./content.ts.
  * To restyle, edit ./home.css (organised by section, same order as above).

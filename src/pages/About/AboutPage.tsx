@@ -13,7 +13,7 @@ import "./about.css";
 import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 
 /**
- * The CodeX About page, top to bottom:
+ * The Code X About page, top to bottom:
  *
  *   Hero      – who we are + screenshot fan + quick facts
  *   Mission   – mission & vision cards

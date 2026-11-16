@@ -10,7 +10,7 @@ import "./contact.css";
 import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 
 /**
- * The CodeX Contact page, top to bottom:
+ * The Code X Contact page, top to bottom:
  *
  *   Hero     – brand-blue banner with the headline + contact detail cards
  *   Main     – the form (floats up over the banner) + "what happens next"

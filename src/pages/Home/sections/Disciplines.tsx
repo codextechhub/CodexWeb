@@ -1,7 +1,7 @@
 import { DISCIPLINES } from "../content";
 import { DisciplineIcon, Reveal, SectionHeading } from "../../../components/shared/ui";
 
-/** Chapter 02 — the four things CodeX builds. */
+/** Chapter 02 — the four things Code X builds. */
 export default function Disciplines() {
   return (
     <section className="section disciplines">

@@ -10,13 +10,13 @@ import "./blog.css";
 import { PAGE_TITLES, usePageTitle } from "../../pageTitles";
 
 /**
- * The CodeX blog index, top to bottom:
+ * The Code X blog index, top to bottom:
  *
  *   Hero      – title over the blue grid
  *   Filters   – category chips
  *   Featured  – the big card (only when "All" is selected)
  *   Grid      – every other post
- *   Cta       – contact CodeX
+ *   Cta       – contact Code X
  *
  * ✏️ Posts and page text: ./content.ts
  * ✏️ Styles:              ./blog.css

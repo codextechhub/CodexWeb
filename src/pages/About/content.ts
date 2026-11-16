@@ -19,11 +19,11 @@ const IMG = {
 
 /* ── 1. HERO ─────────────────────────────────────────────── */
 export const HERO = {
-  eyebrow: "About CodeX",
+  eyebrow: "About Code X",
   title: "We build the systems",
   titleAccent: "organizations run on.",
   body:
-    "CodeX is a software company working on one problem: institutions whose records live in too many places to trust. We build the platforms that hold those records, and the systems that govern who may touch them.",
+    "Code X is a software company working on one problem: institutions whose records live in too many places to trust. We build the platforms that hold those records, and the systems that govern who may touch them.",
   /** Three screenshots fanned out on the right. First one sits on top. */
   images: [
     { src: IMG.schoolDashboard, alt: "XVS school dashboard" },
@@ -95,7 +95,7 @@ export const STORY = {
 export const QUOTE = {
   // ✏️ Swap `by` for a founder's name and role if you'd like it attributed.
   text: "Most organizations don't have a data problem. They have a system problem, and that is the problem we work on.",
-  by: "The CodeX team",
+  by: "The Code X team",
 };
 
 /* ── 5. HOW WE ENGAGE ────────────────────────────────────── */

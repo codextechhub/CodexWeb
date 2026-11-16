@@ -22,7 +22,7 @@ export default function SiteFooter() {
         }}
       >
         <p style={{ margin: 0, fontSize: 13.5, color: "#5C5D5C" }}>
-          © 2026 CodeX Technologies
+          © 2026 Code X Technologies
         </p>
         <Link to="/" style={{ fontSize: 13.5, color: "#5C5D5C" }}>
           Back to home

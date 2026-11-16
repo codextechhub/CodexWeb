@@ -33,7 +33,7 @@ export default function XvsPage() {
               fontWeight: 600,
             }}
           >
-            XVS: CodeX Vision System
+            XVS: Code X Vision System
           </h1>
           <p style={{ fontSize: 17, lineHeight: 1.6, color: "#555654" }}>
             This page is coming soon. XVS is the complete operating system

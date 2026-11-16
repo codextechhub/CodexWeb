@@ -24,7 +24,7 @@ export const HERO = {
   title: "XVS.",
   titleAccent: "Built deep.",
   body:
-    "Each CodeX product takes on a whole operating problem rather than a single feature of it, and owns the records that problem runs on.",
+    "Each Code X product takes on a whole operating problem rather than a single feature of it, and owns the records that problem runs on.",
   // ✏️ Update these counts as products ship.
   status: [
     { label: "live in production", count: 1, live: true },
@@ -35,7 +35,7 @@ export const HERO = {
 /* ── 2. FLAGSHIP (XVS) ───────────────────────────────────── */
 export const FLAGSHIP = {
   name: "XVS",
-  fullName: "CodeX Vision System",
+  fullName: "Code X Vision System",
   badge: "Live",
   title: "The complete operating system for schools",
   body:
